@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.os.dao.QuestionDao" >
+  <resultMap id="BaseResultMap" type="com.os.pojo.O_Question" >
+    <id column="q_id" property="qId" jdbcType="INTEGER" />
+    <result column="q_title" property="qTitle" jdbcType="VARCHAR" />
+    <result column="q_time" property="qTime" jdbcType="TIMESTAMP" />
+    <result column="q_content" property="qContent" jdbcType="VARCHAR" />
+    <result column="q_state" property="qState" jdbcType="INTEGER" />
+    <result column="q_uid" property="qUid" jdbcType="INTEGER" />
+    <result column="q_reply_count" property="qReplyCount" jdbcType="INTEGER" />
+    <result column="q_view_count" property="qViewCount" jdbcType="INTEGER" />
+    <result column="q_rid" property="qRid" jdbcType="INTEGER" />
+    <result column="q_type" property="qType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    q_id, q_title, q_time, q_content, q_state, q_uid, q_reply_count, q_view_count, q_rid, 
+    q_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from o_question
+    where q_id = #{qId,jdbcType=INTEGER}
+  </select>
+  <select id="getTotalByType" resultType="java.lang.Integer" parameterType="com.os.utils.BootStrapTable" >
+       select count(*) from  o_question 
+       where q_type = #{type,jdbcType=INTEGER} 
+       and q_state = #{state,jdbcType=INTEGER}
+  </select>
+  <select id="getTotal" resultType="java.lang.Integer" parameterType="com.os.utils.BootStrapTable" >
+       select count(*) from  o_question 
+       where q_type = #{type,jdbcType=INTEGER} 
+  </select>
+   <select id="getTotalByUser" resultType="java.lang.Integer" parameterType="com.os.utils.BootStrapTable" >
+       select count(*) from  o_question 
+       where q_uid = #{uId,jdbcType=INTEGER}
+  </select>
+  <select id="getQuestionsByUser" resultMap="BaseResultMap" parameterType="com.os.utils.BootStrapTable" >
+       select 
+       <include refid="Base_Column_List" />
+        from  o_question 
+       where q_uid = #{uId,jdbcType=INTEGER}
+       limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+  </select>
+  <select id="getTeacherQuestions" resultMap="BaseResultMap" parameterType="com.os.utils.BootStrapTable" >
+       select 
+       <include refid="Base_Column_List" />
+        from  o_question 
+       where q_type = #{type,jdbcType=INTEGER}
+       limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+  </select>
+   <select id="getStudentQuestions" resultMap="BaseResultMap" parameterType="com.os.utils.BootStrapTable" >
+       select 
+       <include refid="Base_Column_List" />
+        from  o_question 
+       where q_type = #{type,jdbcType=INTEGER}
+       and q_state = #{state,jdbcType=INTEGER}
+       limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from o_question
+    where q_id = #{qId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.os.pojo.O_Question" >
+    insert into o_question (q_id, q_title, q_time, 
+      q_content, q_state, q_uid, 
+      q_reply_count, q_view_count, q_rid, 
+      q_type)
+    values (#{qId,jdbcType=INTEGER}, #{qTitle,jdbcType=VARCHAR}, #{qTime,jdbcType=TIMESTAMP}, 
+      #{qContent,jdbcType=VARCHAR}, #{qState,jdbcType=INTEGER}, #{qUid,jdbcType=INTEGER}, 
+      #{qReplyCount,jdbcType=INTEGER}, #{qViewCount,jdbcType=INTEGER}, #{qRid,jdbcType=INTEGER}, 
+      #{qType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.os.pojo.O_Question" >
+    insert into o_question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
+        q_id,
+      </if>
+      <if test="qTitle != null" >
+        q_title,
+      </if>
+      <if test="qTime != null" >
+        q_time,
+      </if>
+      <if test="qContent != null" >
+        q_content,
+      </if>
+      <if test="qState != null" >
+        q_state,
+      </if>
+      <if test="qUid != null" >
+        q_uid,
+      </if>
+      <if test="qReplyCount != null" >
+        q_reply_count,
+      </if>
+      <if test="qViewCount != null" >
+        q_view_count,
+      </if>
+      <if test="qRid != null" >
+        q_rid,
+      </if>
+      <if test="qType != null" >
+        q_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
+        #{qId,jdbcType=INTEGER},
+      </if>
+      <if test="qTitle != null" >
+        #{qTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="qTime != null" >
+        #{qTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qContent != null" >
+        #{qContent,jdbcType=VARCHAR},
+      </if>
+      <if test="qState != null" >
+        #{qState,jdbcType=INTEGER},
+      </if>
+      <if test="qUid != null" >
+        #{qUid,jdbcType=INTEGER},
+      </if>
+      <if test="qReplyCount != null" >
+        #{qReplyCount,jdbcType=INTEGER},
+      </if>
+      <if test="qViewCount != null" >
+        #{qViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="qRid != null" >
+        #{qRid,jdbcType=INTEGER},
+      </if>
+      <if test="qType != null" >
+        #{qType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.os.pojo.O_Question" >
+    update o_question
+    <set >
+      <if test="qTitle != null" >
+        q_title = #{qTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="qTime != null" >
+        q_time = #{qTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qContent != null" >
+        q_content = #{qContent,jdbcType=VARCHAR},
+      </if>
+      <if test="qState != null" >
+        q_state = #{qState,jdbcType=INTEGER},
+      </if>
+      <if test="qUid != null" >
+        q_uid = #{qUid,jdbcType=INTEGER},
+      </if>
+      <if test="qReplyCount != null" >
+        q_reply_count = #{qReplyCount,jdbcType=INTEGER},
+      </if>
+      <if test="qViewCount != null" >
+        q_view_count = #{qViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="qRid != null" >
+        q_rid = #{qRid,jdbcType=INTEGER},
+      </if>
+      <if test="qType != null" >
+        q_type = #{qType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where q_id = #{qId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.os.pojo.O_Question" >
+    update o_question
+    set q_title = #{qTitle,jdbcType=VARCHAR},
+      q_time = #{qTime,jdbcType=TIMESTAMP},
+      q_content = #{qContent,jdbcType=VARCHAR},
+      q_state = #{qState,jdbcType=INTEGER},
+      q_uid = #{qUid,jdbcType=INTEGER},
+      q_reply_count = #{qReplyCount,jdbcType=INTEGER},
+      q_view_count = #{qViewCount,jdbcType=INTEGER},
+      q_rid = #{qRid,jdbcType=INTEGER},
+      q_type = #{qType,jdbcType=INTEGER}
+    where q_id = #{qId,jdbcType=INTEGER}
+  </update>
+</mapper>

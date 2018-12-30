@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.os.dao.ResourceDao" >
+  <resultMap id="BaseResultMap" type="com.os.pojo.O_Resource" >
+    <id column="resource_id" property="resourceId" jdbcType="INTEGER" />
+    <result column="resource_type" property="resourceType" jdbcType="VARCHAR" />
+    <result column="resource_url" property="resourceUrl" jdbcType="VARCHAR" />
+    <result column="resource_time" property="resourceTime" jdbcType="TIMESTAMP" />
+    <result column="resource_name" property="resourceName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resource_id, resource_type, resource_url, resource_time, resource_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from o_resource
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </select>
+  <select id="getTotal" resultType="java.lang.Integer">
+    select count(*)
+    from o_resource
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.os.utils.BootStrapTable" >
+    select 
+    <include refid="Base_Column_List" />
+   from o_resource
+    order by resource_time
+    limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+  </select>
+  <delete id="deletes" parameterType="java.lang.String" >
+      delete from o_resource
+    where resource_id in (
+    <foreach collection="ids" item="id" separator=",">
+            #{id}
+     </foreach>
+    )
+  </delete>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from o_resource
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.os.pojo.O_Resource" >
+    insert into o_resource (resource_id, resource_type, resource_url, 
+      resource_time, resource_name)
+    values (#{resourceId,jdbcType=INTEGER}, #{resourceType,jdbcType=VARCHAR}, #{resourceUrl,jdbcType=VARCHAR}, 
+      #{resourceTime,jdbcType=TIMESTAMP}, #{resourceName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.os.pojo.O_Resource" >
+    insert into o_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="resourceType != null" >
+        resource_type,
+      </if>
+      <if test="resourceUrl != null" >
+        resource_url,
+      </if>
+      <if test="resourceTime != null" >
+        resource_time,
+      </if>
+      <if test="resourceName != null" >
+        resource_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null" >
+        #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceTime != null" >
+        #{resourceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.os.pojo.O_Resource" >
+    update o_resource
+    <set >
+      <if test="resourceType != null" >
+        resource_type = #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null" >
+        resource_url = #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceTime != null" >
+        resource_time = #{resourceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resourceName != null" >
+        resource_name = #{resourceName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.os.pojo.O_Resource" >
+    update o_resource
+    set resource_type = #{resourceType,jdbcType=VARCHAR},
+      resource_url = #{resourceUrl,jdbcType=VARCHAR},
+      resource_time = #{resourceTime,jdbcType=TIMESTAMP},
+      resource_name = #{resourceName,jdbcType=VARCHAR}
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </update>
+</mapper>
