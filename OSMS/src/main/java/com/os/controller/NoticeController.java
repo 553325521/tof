@@ -17,40 +17,44 @@ import net.sf.json.JSONObject;
 @Controller
 @RequestMapping("/noticeController")
 public class NoticeController {
-     
-	@Autowired
-	private NoticeService noticeService;
-	
-	 @RequestMapping( value = "/getNoticeData", method = RequestMethod.POST,consumes = "application/json" )
-	 @ResponseBody
-	 public BootStrapTable getNoticeData(@RequestBody JSONObject json ){
-		 BootStrapTable bst = new BootStrapTable();
-		 bst.setOffset((json.getInt("offset")));
-		 bst.setLimit(json.getInt("limit"));
-		 return noticeService.getNoticeData(bst);
-	 }
-	 @RequestMapping( value = "/getLastNoticeData", method = RequestMethod.POST,consumes = "application/json" )
-	 @ResponseBody
-	 public BootStrapTable getLastNoticeData(){
-		 return noticeService.getLastNoticeData();
-	 }
-	 @RequestMapping( value = "/addNotice", method = RequestMethod.POST)
-	 @ResponseBody
-	 public ResultMap addNotice(O_Notice n){
-		 ResultMap resultMap = noticeService.addNotice(n);
-		 return resultMap;
-	 }
-	 @RequestMapping( value = "/updateNotice", method = RequestMethod.POST)
-	 @ResponseBody
-	 public ResultMap updateNotice(O_Notice n){
-		 ResultMap resultMap = noticeService.updateNotice(n);
-		 return resultMap;
-	 }
-	 @RequestMapping( value = "/deleteNotices", method = RequestMethod.POST)
-	 @ResponseBody
-	 public ResultMap deleteNotices(String ids){
-		 ResultMap resultMap = noticeService.deleteNotices(ids);
-		 return resultMap;
-	 }
-	
+
+    @Autowired
+    private NoticeService noticeService;
+
+    @RequestMapping(value = "/getNoticeData", method = RequestMethod.POST, consumes = "application/json")
+    @ResponseBody
+    public BootStrapTable getNoticeData(@RequestBody JSONObject json) {
+        BootStrapTable bst = new BootStrapTable();
+        bst.setOffset((json.getInt("offset")));
+        bst.setLimit(json.getInt("limit"));
+        return noticeService.getNoticeData(bst);
+    }
+
+    @RequestMapping(value = "/getLastNoticeData", method = RequestMethod.POST, consumes = "application/json")
+    @ResponseBody
+    public BootStrapTable getLastNoticeData() {
+        return noticeService.getLastNoticeData();
+    }
+
+    @RequestMapping(value = "/addNotice", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultMap addNotice(O_Notice n) {
+        ResultMap resultMap = noticeService.addNotice(n);
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/updateNotice", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultMap updateNotice(O_Notice n) {
+        ResultMap resultMap = noticeService.updateNotice(n);
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/deleteNotices", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultMap deleteNotices(String ids) {
+        ResultMap resultMap = noticeService.deleteNotices(ids);
+        return resultMap;
+    }
+
 }

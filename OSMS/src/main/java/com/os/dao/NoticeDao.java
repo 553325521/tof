@@ -15,14 +15,14 @@ public interface NoticeDao {
     int insertSelective(O_Notice record);
 
     O_Notice selectByPrimaryKey(Integer nId);
-    
+
     List<O_Notice> selectAll(BootStrapTable bst);
-    
+
     List<O_Notice> selectLast();
-    
+
     int getTotal();
-    
-    int deleteNotices(@Param("ids")List  ids);
+
+    int deleteNotices(@Param("ids") List ids);
 
     int updateByPrimaryKeySelective(O_Notice record);
 

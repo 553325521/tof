@@ -71,10 +71,10 @@ public class O_User {
         this.uTx = uTx == null ? null : uTx.trim();
     }
 
-	@Override
-	public String toString() {
-		return "O_User [uId=" + uId + ", uName=" + uName + ", uNumber=" + uNumber + ", uPwd=" + uPwd + ", uEmail="
-				+ uEmail + ", uType=" + uType + ", uTx=" + uTx + "]";
-	}
-    
+    @Override
+    public String toString() {
+        return "O_User [uId=" + uId + ", uName=" + uName + ", uNumber=" + uNumber + ", uPwd=" + uPwd + ", uEmail="
+                + uEmail + ", uType=" + uType + ", uTx=" + uTx + "]";
+    }
+
 }

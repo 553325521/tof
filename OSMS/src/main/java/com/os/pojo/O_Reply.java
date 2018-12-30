@@ -12,30 +12,29 @@ public class O_Reply {
     private String rContent;
 
     private Integer rQId;
-    
+
     private String uName;
-    
+
     private String qTitle;
-    
-    
+
 
     public String getqTitle() {
-		return qTitle;
-	}
+        return qTitle;
+    }
 
-	public void setqTitle(String qTitle) {
-		this.qTitle = qTitle;
-	}
+    public void setqTitle(String qTitle) {
+        this.qTitle = qTitle;
+    }
 
-	public String getuName() {
-		return uName;
-	}
+    public String getuName() {
+        return uName;
+    }
 
-	public void setuName(String uName) {
-		this.uName = uName;
-	}
+    public void setuName(String uName) {
+        this.uName = uName;
+    }
 
-	public Integer getrId() {
+    public Integer getrId() {
         return rId;
     }
 

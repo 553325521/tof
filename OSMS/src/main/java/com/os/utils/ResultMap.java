@@ -1,29 +1,27 @@
 package com.os.utils;
 
 
-
 public class ResultMap {
 
-	private String resultType;
-	
-	private String resultContent;
+    private String resultType;
 
-	public String getResultType() {
-		return resultType;
-	}
+    private String resultContent;
 
-	public void setResultType(String resultType) {
-		this.resultType = resultType;
-	}
+    public String getResultType() {
+        return resultType;
+    }
 
-	public String getResultContent() {
-		return resultContent;
-	}
+    public void setResultType(String resultType) {
+        this.resultType = resultType;
+    }
 
-	public void setResultContent(String resultContent) {
-		this.resultContent = resultContent;
-	}
-	
-	
-	
+    public String getResultContent() {
+        return resultContent;
+    }
+
+    public void setResultContent(String resultContent) {
+        this.resultContent = resultContent;
+    }
+
+
 }

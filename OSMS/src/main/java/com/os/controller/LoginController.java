@@ -15,19 +15,20 @@ import com.os.utils.ResultMap;
 
 @Controller
 public class LoginController {
-	@Autowired
-	private UserService userService;
-	
-	 @RequestMapping( value = "/login", method = RequestMethod.POST )
-	 @ResponseBody
-	public ResultMap login(HttpServletRequest request,O_User user) {
-		 ResultMap resultMap = userService.checkLogin(user,request);
-		return resultMap;
-	}
-	 @RequestMapping(value = "/loginOut")
-	public String loginOut(HttpServletRequest request){
-		CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
-		checkLoginStatus.removeSession();
-		return "index";
-	}
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultMap login(HttpServletRequest request, O_User user) {
+        ResultMap resultMap = userService.checkLogin(user, request);
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/loginOut")
+    public String loginOut(HttpServletRequest request) {
+        CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
+        checkLoginStatus.removeSession();
+        return "index";
+    }
 }

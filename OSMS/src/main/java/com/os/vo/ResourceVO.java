@@ -4,15 +4,15 @@ import com.os.pojo.O_Resource;
 
 public class ResourceVO extends O_Resource {
 
-	private String rTimeStr;
+    private String rTimeStr;
 
-	public String getrTimeStr() {
-		return rTimeStr;
-	}
+    public String getrTimeStr() {
+        return rTimeStr;
+    }
 
-	public void setrTimeStr(String rTimeStr) {
-		this.rTimeStr = rTimeStr;
-	}
-	
-	
+    public void setrTimeStr(String rTimeStr) {
+        this.rTimeStr = rTimeStr;
+    }
+
+
 }

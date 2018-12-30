@@ -13,7 +13,7 @@ public interface UserDao {
     O_User selectByPrimaryKey(Integer uId);
 
     O_User selectByUser(O_User user);
-    
+
     int updateByPrimaryKeySelective(O_User record);
 
     int updateByPrimaryKey(O_User record);

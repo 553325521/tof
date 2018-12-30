@@ -13,16 +13,16 @@ public interface ReplyDao {
     int insertSelective(O_Reply record);
 
     O_Reply selectByPrimaryKey(Integer rId);
-    
+
     int selectReplyCountByQId(Integer qId);
-    
+
     List<O_Reply> getDataByQId(Integer rQId);
-    
+
     List<O_Reply> getDataByUser(Integer uId);
 
     int updateByPrimaryKeySelective(O_Reply record);
 
     int updateByPrimaryKey(O_Reply record);
-    
+
     int deleteByUser(O_Question o);
 }

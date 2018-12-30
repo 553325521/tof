@@ -4,90 +4,90 @@ import java.util.List;
 
 public class BootStrapTable {
 
-	private int total;
-	
-	private List rows;
-	
-	private int limit;
-	
-	private int offset;
-	
-	private int type;
-	
-	private int start;
-	
-	private int state;
-	
-	private int uId;
-	
-	public int getuId() {
-		return uId;
-	}
+    private int total;
 
-	public void setuId(int uId) {
-		this.uId = uId;
-	}
+    private List rows;
 
-	public int getState() {
-		return state;
-	}
+    private int limit;
 
-	public void setState(int state) {
-		this.state = state;
-	}
+    private int offset;
 
-	public int getStart() {
-		return start;
-	}
+    private int type;
 
-	public void setStart(int start) {
-		this.start = start;
-	}
+    private int start;
 
-	public int getType() {
-		return type;
-	}
+    private int state;
 
-	public void setType(int type) {
-		this.type = type;
-	}
+    private int uId;
 
-	public int getLimit() {
-		return limit;
-	}
+    public int getuId() {
+        return uId;
+    }
 
-	public void setLimit(int limit) {
-		this.limit = limit;
-	}
+    public void setuId(int uId) {
+        this.uId = uId;
+    }
 
-	public int getOffset() {
-		return offset;
-	}
+    public int getState() {
+        return state;
+    }
 
-	public void setOffset(int offset) {
-		this.offset = offset;
-	}
+    public void setState(int state) {
+        this.state = state;
+    }
 
-	public int getTotal() {
-		return total;
-	}
+    public int getStart() {
+        return start;
+    }
 
-	public void setTotal(int total) {
-		this.total = total;
-	}
+    public void setStart(int start) {
+        this.start = start;
+    }
 
-	public List getRows() {
-		return rows;
-	}
+    public int getType() {
+        return type;
+    }
 
-	public void setRows(List rows) {
-		this.rows = rows;
-	}
+    public void setType(int type) {
+        this.type = type;
+    }
 
-	@Override
-	public String toString() {
-		return "BootStrapTable [total=" + total + ", rows=" + rows + ", limit=" + limit + ", offset=" + offset
-				+ ", type=" + type + ", start=" + start + "]";
-	}
-	
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public List getRows() {
+        return rows;
+    }
+
+    public void setRows(List rows) {
+        this.rows = rows;
+    }
+
+    @Override
+    public String toString() {
+        return "BootStrapTable [total=" + total + ", rows=" + rows + ", limit=" + limit + ", offset=" + offset
+                + ", type=" + type + ", start=" + start + "]";
+    }
+
 }

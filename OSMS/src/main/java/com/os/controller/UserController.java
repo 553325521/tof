@@ -14,16 +14,16 @@ import com.os.utils.ResultMap;
 
 
 @Controller
-@RequestMapping( "/userController" )
+@RequestMapping("/userController")
 public class UserController {
-	
-	@Autowired
-	private UserService userService;
-	
-	 @RequestMapping( value = "/stuRegister", method = RequestMethod.POST )
-	 @ResponseBody
-	public ResultMap stuRegister(HttpServletRequest request,O_User user) {
-		ResultMap resultMap = userService.register(user,request);
-		return resultMap;
-	}
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/stuRegister", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultMap stuRegister(HttpServletRequest request, O_User user) {
+        ResultMap resultMap = userService.register(user, request);
+        return resultMap;
+    }
 }

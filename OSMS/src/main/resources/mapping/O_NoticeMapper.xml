@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.os.dao.NoticeDao" >
-  <resultMap id="BaseResultMap" type="com.os.pojo.O_Notice" >
-    <id column="n_id" property="nId" jdbcType="INTEGER" />
-    <result column="n_title" property="nTitle" jdbcType="VARCHAR" />
-    <result column="n_time" property="nTime" jdbcType="TIMESTAMP" />
-    <result column="n_content" property="nContent" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.os.dao.NoticeDao">
+    <resultMap id="BaseResultMap" type="com.os.pojo.O_Notice">
+        <id column="n_id" property="nId" jdbcType="INTEGER"/>
+        <result column="n_title" property="nTitle" jdbcType="VARCHAR"/>
+        <result column="n_time" property="nTime" jdbcType="TIMESTAMP"/>
+        <result column="n_content" property="nContent" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     n_id, n_title, n_time, n_content
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from o_notice
-    where n_id = #{nId,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.os.utils.BootStrapTable" >
-    select 
-    <include refid="Base_Column_List" />
-    from o_notice
-    order by n_time
-    limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
-  </select>
-   <select id="selectLast" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from o_notice
-    order by n_time desc
-    limit 0,15
-  </select>
-  <select id="getTotal" resultType="java.lang.Integer">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from o_notice
+        where n_id = #{nId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.os.utils.BootStrapTable">
+        select
+        <include refid="Base_Column_List"/>
+        from o_notice
+        order by n_time
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+    </select>
+    <select id="selectLast" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from o_notice
+        order by n_time desc
+        limit 0,15
+    </select>
+    <select id="getTotal" resultType="java.lang.Integer">
     select count(*)
     from o_notice
   </select>
-  <delete id="deleteNotices" parameterType="java.lang.String" >
-     delete from o_notice
-    where n_id in (
-    <foreach collection="ids" item="id" separator=",">
+    <delete id="deleteNotices" parameterType="java.lang.String">
+        delete from o_notice
+        where n_id in (
+        <foreach collection="ids" item="id" separator=",">
             #{id}
-     </foreach>
-    )
-  </delete>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        </foreach>
+        )
+    </delete>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from o_notice
     where n_id = #{nId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.os.pojo.O_Notice" >
+    <insert id="insert" parameterType="com.os.pojo.O_Notice">
     insert into o_notice (n_id, n_title, n_time, 
       n_content)
     values (#{nId,jdbcType=INTEGER}, #{nTitle,jdbcType=VARCHAR}, #{nTime,jdbcType=TIMESTAMP}, 
       #{nContent,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.os.pojo.O_Notice" >
-    insert into o_notice
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="nId != null" >
-        n_id,
-      </if>
-      <if test="nTitle != null" >
-        n_title,
-      </if>
-      <if test="nTime != null" >
-        n_time,
-      </if>
-      <if test="nContent != null" >
-        n_content,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="nId != null" >
-        #{nId,jdbcType=INTEGER},
-      </if>
-      <if test="nTitle != null" >
-        #{nTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="nTime != null" >
-        #{nTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nContent != null" >
-        #{nContent,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.os.pojo.O_Notice" >
-    update o_notice
-    <set >
-      <if test="nTitle != null" >
-        n_title = #{nTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="nTime != null" >
-        n_time = #{nTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nContent != null" >
-        n_content = #{nContent,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where n_id = #{nId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.os.pojo.O_Notice" >
+    <insert id="insertSelective" parameterType="com.os.pojo.O_Notice">
+        insert into o_notice
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nId != null">
+                n_id,
+            </if>
+            <if test="nTitle != null">
+                n_title,
+            </if>
+            <if test="nTime != null">
+                n_time,
+            </if>
+            <if test="nContent != null">
+                n_content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="nId != null">
+                #{nId,jdbcType=INTEGER},
+            </if>
+            <if test="nTitle != null">
+                #{nTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="nTime != null">
+                #{nTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nContent != null">
+                #{nContent,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.os.pojo.O_Notice">
+        update o_notice
+        <set>
+            <if test="nTitle != null">
+                n_title = #{nTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="nTime != null">
+                n_time = #{nTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nContent != null">
+                n_content = #{nContent,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where n_id = #{nId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.os.pojo.O_Notice">
     update o_notice
     set n_title = #{nTitle,jdbcType=VARCHAR},
       n_time = #{nTime,jdbcType=TIMESTAMP},

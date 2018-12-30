@@ -6,9 +6,9 @@ import com.os.utils.ResultMap;
 
 public interface ResourceService {
 
-	public ResultMap add(O_Resource r);
-	
-	public  BootStrapTable getResourceData(BootStrapTable bst);
-	
-	public ResultMap deletes(String  ids);
+    public ResultMap add(O_Resource r);
+
+    public BootStrapTable getResourceData(BootStrapTable bst);
+
+    public ResultMap deletes(String ids);
 }

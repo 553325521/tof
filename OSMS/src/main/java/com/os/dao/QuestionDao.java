@@ -17,17 +17,17 @@ public interface QuestionDao {
     int updateByPrimaryKeySelective(O_Question record);
 
     int updateByPrimaryKey(O_Question record);
-    
+
     int getTotalByType(BootStrapTable bst);
-    
+
     int getTotal(BootStrapTable bst);
-    
+
     int getTotalByUser(BootStrapTable bst);
-    
+
     List<O_Question> getStudentQuestions(BootStrapTable bst);
-    
+
     List<O_Question> getTeacherQuestions(BootStrapTable bst);
-    
+
     List<O_Question> getQuestionsByUser(BootStrapTable bst);
-    
+
 }

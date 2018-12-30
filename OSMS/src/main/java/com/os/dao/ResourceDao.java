@@ -19,10 +19,10 @@ public interface ResourceDao {
     int updateByPrimaryKeySelective(O_Resource record);
 
     int updateByPrimaryKey(O_Resource record);
-    
+
     List<O_Resource> selectAll(BootStrapTable bst);
-    
+
     int getTotal();
-    
-    int deletes(@Param("ids")List  ids);
+
+    int deletes(@Param("ids") List ids);
 }
