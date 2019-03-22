@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 import javax.websocket.OnClose;
+import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
@@ -38,6 +39,7 @@ public class ChatServer {
 		sessions.add(session);
 		users.add(username);
 		String msg = "欢迎" + username + "来到聊天室!";
+		System.out.println(msg);
 //		Message message = new Message();
 //		message.setWelcome(msg);
 //		message.setUsername(users);
@@ -79,5 +81,10 @@ public class ChatServer {
     @OnClose
     public void onClose(Session session) {
         sessions.remove(session);
+    }
+    
+    @OnError
+    public void onError(Session session,Throwable error){
+    	sessions.remove(session);
     }
 }

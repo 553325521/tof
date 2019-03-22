@@ -5,7 +5,7 @@
 	<artifactId>TSEP</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TSEP Maven Webapp</name>
+	<name>TSEP</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<!-- spring版本号 -->
@@ -153,11 +153,11 @@
 		</dependency>
 		<!-- 导入websocket -->
 		<dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-            <version>1.1</version>
-            <scope>provided</scope>
-        </dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- 导入java ee jar 包 -->
 		<dependency>
 			<groupId>javax</groupId>
@@ -257,7 +257,19 @@
 			<version>2.6.12</version>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<finalName>TSEP</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
