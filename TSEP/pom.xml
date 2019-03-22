@@ -151,6 +151,13 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<!-- 导入websocket -->
+		<dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>1.1</version>
+            <scope>provided</scope>
+        </dependency>
 		<!-- 导入java ee jar 包 -->
 		<dependency>
 			<groupId>javax</groupId>
