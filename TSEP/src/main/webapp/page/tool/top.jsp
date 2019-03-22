@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a aria-expanded="false" role="button" href="<%=basePath%>page/joke_board/joke_board.jsp">搞笑便签</a>
                     </li>
 					<li>
-                        <a aria-expanded="false" role="button" href="layouts.html">个人中心</a>
+                        <a aria-expanded="false" role="button" href="<%=basePath%>page/personal/personal.jsp">个人中心</a>
                     </li>
 				  </ul>
                 <!--<ul class="nav navbar-top-links navbar-right">
