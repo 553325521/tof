@@ -190,7 +190,7 @@ function randomString(len) {
 }
 var username = randomString(4);
 var ws; //一个ws对象就是一个通话管理
-var target = "ws://192.168.1.2/TSEP/chat?username="+username;
+var target = "ws://localhost/TSEP/chat?username="+username;
 
 
 $(function(){

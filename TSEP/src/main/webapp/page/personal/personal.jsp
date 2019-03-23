@@ -99,7 +99,7 @@
 						<li><a aria-expanded="false" role="button"
 							href="<%=basePath%>page/question/question.jsp">问题解答</a></li>
 						<li><a aria-expanded="false" role="button"
-							href="layouts.html">教学资源</a></li>
+							href="<%=basePath%>page/teaching_resources/teaching_resources.jsp">教学资源</a></li>
 						<li><a aria-expanded="false" role="button"
 							href="<%=basePath%>page/chat/chat.jsp">在线交流</a></li>
 						<li><a aria-expanded="false" role="button"
@@ -203,7 +203,7 @@
 							</ul></li>
 
 
-						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
+						<li><a href="<%=basePath%>/login.jsp"> <i class="fa fa-sign-out"></i>
 								注销
 						</a></li>
 					</ul>
