@@ -32,9 +32,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!--</button>-->
 
                 <a href="#" class="navbar-brand">师生交流平台</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-reorder"></i>
-                </button>
+                </button> -->
 
             <!--</div>-->
             <div class="navbar-collapse collapse" id="navbar">

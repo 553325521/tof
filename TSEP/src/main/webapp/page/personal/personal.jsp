@@ -19,9 +19,25 @@
 <link href="<%=basePath%>css/iframe/style.css" rel="stylesheet">
 </head>
 <style>
-	.content-tabs {
-    	border-bottom: solid 1px #e7eaec !important;;
-	}
+.content-tabs {
+	border-bottom: solid 1px #e7eaec !important;
+}
+
+.fixed-nav .navbar-brand {
+	background: #1ab394;
+	color: #fff;
+	padding: 15px 25px;
+	font-size: 18px;
+	line-height: 31px;
+}
+
+.daohang>li>a {
+	color: #676a6c;
+}
+
+.nav.navbar-right>li>a {
+	color: #676a6c;
+}
 </style>
 <body class="fixed-nav">
 
@@ -32,24 +48,23 @@
 				<ul class="nav metismenu" id="side-menu">
 					<li class="nav-header">
 						<div class="dropdown profile-element">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#"> <span
-								class="block m-t-xs font-bold">Example user</span> <span
-								class="text-muted text-xs block">menu <b class="caret"></b>
-							</span>
+							<img alt="image" class="rounded-circle"
+								src="<%=basePath%>img/profile_small.jpg" /> <a
+								data-toggle="dropdown" class="dropdown-toggle" href="#"> <span
+								class="block m-t-xs font-bold">个人中心</span> <!-- 	<span class="text-muted text-xs block">menu <b class="caret"></b></span> -->
 							</a>
-							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+							<!-- <ul class="dropdown-menu animated fadeInRight m-t-xs">
 								<li><a class="dropdown-item" href="login.html">Logout</a></li>
-							</ul>
+							</ul> -->
 						</div>
-						<div class="logo-element">IN+</div>
+						<!-- <div class="logo-element">IN+</div> -->
 					</li>
 					<li class="active"><a class="J_menuItem"
-						href="dashboard_1.html"> <i class="fa fa-th-large"></i> <span
-							class="nav-label">Main view</span>
+						href="<%=basePath%>page/personal/myinfo.jsp"> <i class="fa fa-user-circle"></i> <span
+							class="nav-label">个人信息</span>
 					</a></li>
-					<li><a class="J_menuItem" href="minor.html"> <i
-							class="fa fa-th-large"></i> <span class="nav-label">Minor
-								view</span>
+					<li><a class="J_menuItem" href="<%=basePath%>page/personal/my_operation.jsp"> <i
+							class="fa fa-star-o"></i> <span class="nav-label">全部动态</span>
 					</a></li>
 					<li><a class="J_menuItem" href="minor.html"> <i
 							class="fa fa-th-large"></i> <span class="nav-label">Minor
@@ -62,10 +77,10 @@
 
 		<div id="page-wrapper" class="white-bg">
 			<div class="row border-bottom">
-				<nav class="navbar navbar-fixed-top white-bg" role="navigation"
-					style="margin-bottom: 0">
-					<div class="navbar-header">
-						<!-- <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+				<nav class="navbar navbar-fixed-top white-bg" role="navigation">
+					<!-- <div class="navbar-header">
+						
+						 <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
 							href="#"> <i class="fa fa-bars"></i>
 						</a>
 						<form role="search" class="navbar-form-custom" method="post"
@@ -74,29 +89,25 @@
 								<input type="text" placeholder="Search for something..."
 									class="form-control" name="top-search" id="top-search">
 							</div>
-						</form> -->
-						 <div class="navbar-collapse collapse" id="navbar">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="active">
-                        <a aria-expanded="false" role="button" href="<%=basePath%>index.jsp"> 首页</a>
-                    </li>
-					<li>
-                        <a aria-expanded="false" role="button" href="<%=basePath%>page/question/question.jsp">问题解答</a>
-                    </li>
-					<li>
-                        <a aria-expanded="false" role="button" href="layouts.html">教学资源</a>
-                    </li>
-					<li>
-                        <a aria-expanded="false" role="button" href="<%=basePath%>page/chat/chat.jsp">在线交流</a>
-                    </li>
-					<li>
-                        <a aria-expanded="false" role="button" href="<%=basePath%>page/joke_board/joke_board.jsp">搞笑便签</a>
-                    </li>
-					<li>
-                        <a aria-expanded="false" role="button" href="<%=basePath%>page/personal/personal.jsp">个人中心</a>
-                    </li>
-				  </ul></div>
-					</div>
+						</form>
+					</div>	 -->
+					<a href="#" class="navbar-brand">师生交流平台</a>
+					<ul class="daohang nav navbar-nav mr-auto"
+						style="flex-direction: row">
+						<li class=""><a class="active_s" aria-expanded="false"
+							role="button" href="<%=basePath%>index.jsp"> 首页</a></li>
+						<li><a aria-expanded="false" role="button"
+							href="<%=basePath%>page/question/question.jsp">问题解答</a></li>
+						<li><a aria-expanded="false" role="button"
+							href="layouts.html">教学资源</a></li>
+						<li><a aria-expanded="false" role="button"
+							href="<%=basePath%>page/chat/chat.jsp">在线交流</a></li>
+						<li><a aria-expanded="false" role="button"
+							href="<%=basePath%>page/joke_board/joke_board.jsp">搞笑便签</a></li>
+						<li><a aria-expanded="false" role="button"
+							style="color:#19aa8d"
+							href="<%=basePath%>page/personal/personal.jsp">个人中心</a></li>
+					</ul>
 					<ul class="nav navbar-top-links navbar-right">
 						<li style="padding: 20px"><span
 							class="m-r-sm text-muted welcome-message">欢迎来到师生交流平台</span></li>
@@ -108,7 +119,8 @@
 								<li>
 									<div class="dropdown-messages-box">
 										<a class="dropdown-item float-left" href="profile.html"> <img
-											alt="image" class="rounded-circle" src="<%=basePath%>img/a7.jpg">
+											alt="image" class="rounded-circle"
+											src="<%=basePath%>img/a7.jpg">
 										</a>
 										<div class="media-body">
 											<small class="float-right">46 小时前</small> <strong>小明</strong>
@@ -121,7 +133,8 @@
 								<li>
 									<div class="dropdown-messages-box">
 										<a class="dropdown-item float-left" href="profile.html"> <img
-											alt="image" class="rounded-circle" src="<%=basePath%>img/a4.jpg">
+											alt="image" class="rounded-circle"
+											src="<%=basePath%>img/a4.jpg">
 										</a>
 										<div class="media-body ">
 											<small class="float-right text-navy">5 小时前</small> <strong>小红</strong>
@@ -134,7 +147,8 @@
 								<li>
 									<div class="dropdown-messages-box">
 										<a class="dropdown-item float-left" href="profile.html"> <img
-											alt="image" class="rounded-circle" src="<%=basePath%>img/profile.jpg">
+											alt="image" class="rounded-circle"
+											src="<%=basePath%>img/profile.jpg">
 										</a>
 										<div class="media-body ">
 											<small class="float-right">23 小时前</small> <strong>小黑</strong>
@@ -156,7 +170,8 @@
 							data-toggle="dropdown" href="#"> <i class="fa fa-bell"></i> <span
 								class="label label-primary">8</span>
 						</a>
-							<ul class="dropdown-menu dropdown-alerts" style="margin-left: -680%;">
+							<ul class="dropdown-menu dropdown-alerts"
+								style="margin-left: -680%;">
 								<li><a href="mailbox.html" class="dropdown-item">
 										<div>
 											<i class="fa fa-envelope fa-fw"></i> 你有16条消息 <span
@@ -195,12 +210,10 @@
 
 				</nav>
 			</div>
-			<div class="row content-tabs">
-               
-            </div> 
+			<div class="row content-tabs"></div>
 			<div class="row J_mainContent" id="content-main">
 				<iframe class="J_iframe" name="iframe0" width="100%" height="100%"
-					src="dashboard_1.html" frameborder="0" data-id="dashboard_1.html"
+					src="<%=basePath%>page/personal/myinfo.jsp" frameborder="0" data-id="<%=basePath%>page/personal/myinfo.jsp"
 					seamless></iframe>
 			</div>
 			<div class="footer">
