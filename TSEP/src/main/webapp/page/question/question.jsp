@@ -63,7 +63,7 @@
 							<tbody>
 								<tr>
 									<td><span class="label label-primary">添加</span></td>
-									<td class="issue-info"><a href="#">
+									<td class="issue-info"><a href="<%=basePath%>page/question/question_detail.jsp">
 											时间从何而来？为什么时间似乎是流动的？ </a> <small>
 											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
 									<td>火星一号</td>
