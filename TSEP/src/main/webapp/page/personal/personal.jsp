@@ -97,7 +97,7 @@
 						<li class=""><a class="active_s" aria-expanded="false"
 							role="button" href="<%=basePath%>index.jsp"> 首页</a></li>
 						<li><a aria-expanded="false" role="button"
-							href="<%=basePath%>page/question/question.jsp">问题解答</a></li>
+							href="<%=basePath%>page/question/question.jsp">学习专区</a></li>
 						<li><a aria-expanded="false" role="button"
 							href="<%=basePath%>page/teaching_resources/teaching_resources.jsp">教学资源</a></li>
 						<li><a aria-expanded="false" role="button"

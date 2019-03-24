@@ -11,9 +11,9 @@
 		<div class="col-lg-12">
 			<div class="ibox">
 				<div class="ibox-title">
-					<h5>问题列表</h5>
+					<h5>文章列表</h5>
 					<div class="ibox-tools">
-						<a href="<%=basePath%>page/question/question_add.jsp" class="btn btn-primary btn-xs">添加新问题</a>
+						<a href="<%=basePath%>page/question/question_add.jsp" class="btn btn-primary btn-xs">发表</a>
 					</div>
 				</div>
 				<div class="ibox-content">
@@ -21,7 +21,7 @@
 					<div class="m-b-lg">
 
 						<div class="input-group input-group-sm">
-							<input type="text" class="form-control" placeholder="按名称搜索问题...">
+							<input type="text" class="form-control" placeholder="按名称搜索...">
 							<div class="input-group-append">
 								<button class="btn btn-white" type="button">搜索</button>
 							</div>
