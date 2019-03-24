@@ -2,6 +2,7 @@ package top.tsep.dao;
 
 import top.tsep.pojo.SubjectEntity;
 
+
 public interface SubjectDao {
     int deleteByPrimaryKey(Integer id);
 

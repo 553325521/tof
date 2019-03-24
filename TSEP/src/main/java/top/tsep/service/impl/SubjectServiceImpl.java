@@ -6,11 +6,12 @@ import top.tsep.dao.SubjectDao;
 import top.tsep.pojo.SubjectEntity;
 import top.tsep.service.SubjectService;
 
-@Service("SubjectService")
+@Service("subjectService")
 public class SubjectServiceImpl implements SubjectService {
 
     @Autowired
-    SubjectDao subjectDao;
+    private SubjectDao subjectDao;
+    
     public SubjectEntity selectByName(String subject_name){
         return subjectDao.selectByName(subject_name);
     }

@@ -136,7 +136,7 @@ button {
 								<h2>师生交流平台</h2>
 								<p>请按照以下步骤操作，完成注册</p>
 
-								<form id="form" action="#" class="wizard-big">
+								<form id="form" class="wizard-big" method="post">
 									<h1>选择身份</h1>
 									<fieldset>
 										<!-- <h2>选择身份</h2> -->
@@ -146,12 +146,12 @@ button {
 													style="margin-top: 20%;margin-left: 20%">
 													<div class="checkbox checkbox-circle">
 														<input id="radio1" class="styled" checked type="radio"
-															name="my_id"> <label for="radio1"
+															name="userType" value="0"> <label for="radio1"
 															class="font-bolder"> 我是学生 </label>
 													</div>
 													<div class="checkbox checkbox-circle">
 														<input id="radio2" class="styled" type="radio"
-															name="my_id"> <label for="radio2"
+															name="userType" value="1"> <label for="radio2"
 															class="font-bolder"> 我是老师 </label>
 													</div>
 
@@ -183,8 +183,8 @@ button {
 											<div class="col-lg-8">
 												<div class="form-group"
 													style="margin-top: 20%;margin-left: 20%">
-													<input id="name" name="t_subject" type="text"
-														class="form-control required"  placeholder="请输入科目名称">
+													<input id="subjectName" name="subjectName" type="text"
+														class="form-control required" placeholder="请输入科目名称">
 												</div>
 											</div>
 											<div class="col-lg-4">
@@ -213,7 +213,7 @@ button {
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group">
-													<label>用户名*</label> <input id="username" name="username"
+													<label>昵称*</label> <input id="nickName" name="nickName"
 														type="text" class="form-control required">
 												</div>
 
@@ -228,11 +228,7 @@ button {
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group">
-													<label>昵称*</label> <input id="nickname" name="nickname"
-														type="text" class="form-control required">
-												</div>
-												<div class="form-group">
-													<label>真实姓名*</label> <input id="realname" name="realname"
+													<label>真实姓名*</label> <input id="realName" name="realName"
 														type="text" class="form-control required">
 												</div>
 												<div class="form-group">
@@ -266,11 +262,12 @@ button {
 													<p>预览(128*128)：</p>
 													<div class="img-preview"></div>
 												</div>
-												<button class="btn btn-primary" onclick="crop()">裁剪图片</button>
+												<button class="btn btn-primary" type="button"
+													onclick="crop()">裁剪图片</button>
 												<div>
 													<br />
 													<p>结果：</p>
-													<img  alt="裁剪结果" id="result">
+													<img alt="裁剪结果" id="result">
 												</div>
 											</div>
 										</div>
@@ -349,9 +346,6 @@ button {
 				// 裁剪后将图片放到指定标签
 				$target.attr('src', URL.createObjectURL(blob));
 			});
-			var cas=$('#photo').cropper('getCroppedCanvas');
-	        var base64url=cas.toDataURL('image/jpeg');
-	        console.info(base64url);
 		}
 		function changeFile() {
 			var options = {
@@ -438,9 +432,16 @@ button {
 				},
 				onFinished : function(event, currentIndex) {
 					var form = $(this);
-					console.info("finish");
-					// Submit form input
-					//form.submit();
+					var cas = $('#photo').cropper('getCroppedCanvas');
+					var base64url = cas.toDataURL('image/jpeg');
+					console.info(base64url);
+					var parameter = $.param({
+						"userTx" : base64url
+					}) + "&" + form.serialize();
+					$.post('<%=basePath%>/register', parameter, function(data) {
+						console.info(data);
+					}, "json")
+					console.info(parameter);
 				}
 			}).validate({
 				errorPlacement : function(error, element) {
