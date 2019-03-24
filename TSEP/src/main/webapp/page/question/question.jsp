@@ -13,7 +13,7 @@
 				<div class="ibox-title">
 					<h5>问题列表</h5>
 					<div class="ibox-tools">
-						<a href="" class="btn btn-primary btn-xs">添加新问题</a>
+						<a href="<%=basePath%>page/question/question_add.jsp" class="btn btn-primary btn-xs">添加新问题</a>
 					</div>
 				</div>
 				<div class="ibox-content">

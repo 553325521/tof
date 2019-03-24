@@ -12,7 +12,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>个人信息</title>
+	<title>师生交流平台</title>
 	<jsp:include page="/page/tool/top.jsp"></jsp:include>
 	<link href="<%=basePath%>css/plugins/iCheck/custom.css" rel="stylesheet">
 	<link href="<%=basePath%>css/plugins/summernote/summernote-bs4.css" rel="stylesheet">
