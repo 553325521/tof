@@ -92,7 +92,8 @@
             success: function(result) {
                 var htmlappend = '';
              for(var i=0;i<result.length;i++){
-              htmlappend += '<option value="'+result[i].id+'">'+result[i].subjectName+'</option>';
+              /* htmlappend += '<option value="'+result[i].id+'">'+result[i].subjectName+'</option>'; */
+            	 htmlappend += `<option value="${"${result[i].id}"}">${"${result[i].subjectName}"}</option>`;
              }
                 $("#type").append(htmlappend);
             }
