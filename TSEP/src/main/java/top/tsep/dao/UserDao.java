@@ -55,4 +55,8 @@ public interface UserDao {
     
     
     int insertUserSubject(@Param("userId")int userId,@Param("subjectId")int subjectId);
+    
+    
+    UserEntity checkLogin(UserEntity record);
+    
 }

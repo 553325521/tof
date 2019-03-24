@@ -29,7 +29,15 @@
     from ts_user
     where id = #{id,jdbcType=INTEGER}
   </select>
-
+  
+   <select id="checkLogin" resultMap="BaseResultMap" parameterType="top.tsep.pojo.UserEntity" >
+    select
+    <include refid="Base_Column_List" />
+    from ts_user
+    where email = #{email,jdbcType=INTEGER}
+    and pass_word = #{passWord,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ts_user
     where id = #{id,jdbcType=INTEGER}
