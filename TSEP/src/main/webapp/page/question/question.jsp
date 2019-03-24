@@ -68,7 +68,7 @@
 											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
 									<td>火星一号</td>
 									<td>2017.12.12 10:00</td>
-									<td><span class="pie">0.52,1.041</span> 2d</td>
+									<td><span class="pie">4/5</span> 2d</td>
 									<td class="text-right">
 										<button class="btn btn-white btn-xs">标签</button>
 										<button class="btn btn-white btn-xs">标签</button>

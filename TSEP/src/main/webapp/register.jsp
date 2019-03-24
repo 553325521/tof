@@ -349,6 +349,9 @@ button {
 				// 裁剪后将图片放到指定标签
 				$target.attr('src', URL.createObjectURL(blob));
 			});
+			var cas=$('#photo').cropper('getCroppedCanvas');
+	        var base64url=cas.toDataURL('image/jpeg');
+	        console.info(base64url);
 		}
 		function changeFile() {
 			var options = {
