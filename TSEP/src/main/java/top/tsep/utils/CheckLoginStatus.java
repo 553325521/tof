@@ -3,9 +3,7 @@ package top.tsep.utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-//import com.tsep.pojo.O_User;
-
-
+import top.tsep.pojo.UserEntity;
 
 public class CheckLoginStatus {
 	 private HttpServletRequest mRequest;
@@ -30,30 +28,30 @@ public class CheckLoginStatus {
 	    	 HttpSession session = mRequest.getSession();
 	         session.removeAttribute("SESSION_USER");
 	    }
-//	    public O_User getUsers()
-//	    {
-//	        HttpSession session = mRequest.getSession();
-//	        if ( session != null )
-//	        {
-//	            if ( session.getAttribute( "SESSION_USER" ) != null )
-//	            {
-//	                return (O_User)session.getAttribute( "SESSION_USER" );
-//	            } else
-//	            {
-//	                return null;
-//	            }
-//	        } else
-//	        {
-//	            return null;
-//	        }
-//	    }
-//
-//	    public void putUsers( O_User users )
-//	    {
-//	        HttpSession session = mRequest.getSession();
-//	        if ( session != null )
-//	        {
-//	            session.setAttribute( "SESSION_USER", users );
-//	        }
-//	    }
+	    public UserEntity getUsers()
+	    {
+	        HttpSession session = mRequest.getSession();
+	        if ( session != null )
+	        {
+	            if ( session.getAttribute( "SESSION_USER" ) != null )
+	            {
+	                return (UserEntity)session.getAttribute( "SESSION_USER" );
+	            } else
+	            {
+	                return null;
+	            }
+	        } else
+	        {
+	            return null;
+	        }
+	    }
+
+	    public void putUsers( UserEntity users )
+	    {
+	        HttpSession session = mRequest.getSession();
+	        if ( session != null )
+	        {
+	            session.setAttribute( "SESSION_USER", users );
+	        }
+	    }
 }

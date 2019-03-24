@@ -17,7 +17,8 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
+<!-- Toastr style -->
+<link href="<%=basePath%>css/plugins/toastr/toastr.min.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 
@@ -38,27 +39,24 @@
 			</div>
 			<div class="col-md-6">
 				<div class="ibox-content">
-					<form class="m-t" role="form" action="index.html">
+					<form class="m-t" role="form" id="loginForm">
 						<div class="form-group">
-							<input type="email" class="form-control" placeholder="用户名"
+							<input type="email" class="form-control" name="email" placeholder="邮箱"
 								required="">
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" placeholder="密码"
+							<input type="password" class="form-control" name="passWord" placeholder="密码"
 								required="">
 						</div>
 						<div class="form-group">
-							<select class="form-control m-b" name="type" id="type">
-								<%--<c:forEach items="${subject}" var="item" varStatus="stat">--%>
-								<%--<option value="${item.id}">${item.subjectName}</option>--%>
-								<%--</c:forEach>--%>
+							<select class="form-control m-b" name="attribute2" id="attribute2">
 							</select>
 						</div>
 
-						<button type="submit" class="btn btn-primary block full-width m-b">登录</button>
+						<button type="button" id="loginBtn" class="btn btn-primary block full-width m-b">登录</button>
 
-						<a href="#"> <small>忘记密码?</small>
-						</a>
+						<!-- <a href="#"> <small>忘记密码?</small>
+						</a> -->
 
 						<p class="text-muted text-center">
 							<small>还没有账号?</small>
@@ -81,9 +79,8 @@
 	</div>
 
 </body>
-
-</html>
 <script src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
+<script src="<%=basePath%>js/plugins/toastr/toastr.min.js"></script>
 <script>
     $(document).ready(function() {
         $.ajax({
@@ -95,8 +92,38 @@
               /* htmlappend += '<option value="'+result[i].id+'">'+result[i].subjectName+'</option>'; */
             	 htmlappend += `<option value="${"${result[i].id}"}">${"${result[i].subjectName}"}</option>`;
              }
-                $("#type").append(htmlappend);
+                $("#attribute2").append(htmlappend);
             }
         });
 	});
+    $(function(){
+    	$("#loginBtn").click(function(){
+    		var loginInfo = $("#loginForm").serialize();
+    		$.post("<%=basePath%>/login",loginInfo,function(data){
+    			 if(data.resultType == '0000'){
+    				 location.href="<%=basePath%>index.jsp";
+    			 }else{
+    				 toastr.options = {
+   						  "closeButton": true,
+   						  "debug": false,
+   						  "progressBar": true,
+   						  "preventDuplicates": true,
+   						  "positionClass": "toast-bottom-right",
+   						  "onclick": null,
+   						  "showDuration": "400",
+   						  "hideDuration": "1000",
+   						  "timeOut": "7000",
+   						  "extendedTimeOut": "1000",
+   						  "showEasing": "swing",
+   						  "hideEasing": "linear",
+   						  "showMethod": "fadeIn",
+   						  "hideMethod": "fadeOut"
+   						};
+   				 	toastr['success'](data.resultContent,'登录失败');
+    			 }
+    		},"json");
+    	})
+    })
 </script>
+</html>
+

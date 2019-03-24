@@ -443,7 +443,7 @@ button {
 					}) + "&" + form.serialize();
 					$.post("<%=basePath%>/register", parameter, function(data) {
 						if(data.resultType == '0000'){
-							location.href="<%=basePath%>/login.jsp";
+							location.href="<%=basePath%>login.jsp";
 						}else{
 							 toastr.options = {
 									  "closeButton": true,
@@ -464,7 +464,6 @@ button {
 							 toastr['warning']('科目不存在!','注册失败');
 						}
 					}, "json")
-					console.info(parameter);
 				}
 			}).validate({
 				errorPlacement : function(error, element) {
