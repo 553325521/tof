@@ -2,6 +2,8 @@ package top.tsep.dao;
 
 import top.tsep.pojo.SubjectEntity;
 
+import java.util.List;
+
 
 public interface SubjectDao {
     int deleteByPrimaryKey(Integer id);
@@ -17,4 +19,6 @@ public interface SubjectDao {
     int updateByPrimaryKey(SubjectEntity record);
 
     SubjectEntity selectByName(String subject_name);
+
+    List<SubjectEntity> findAllSubject();
 }

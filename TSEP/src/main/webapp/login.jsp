@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -47,11 +48,10 @@
 								required="">
 						</div>
 						<div class="form-group">
-							<select class="form-control m-b" name="type">
-								<option>Python</option>
-								<option>Linux</option>
-								<option>Java</option>
-								<option>C++</option>
+							<select class="form-control m-b" name="type" id="type">
+								<%--<c:forEach items="${subject}" var="item" varStatus="stat">--%>
+								<%--<option value="${item.id}">${item.subjectName}</option>--%>
+								<%--</c:forEach>--%>
 							</select>
 						</div>
 
@@ -83,3 +83,19 @@
 </body>
 
 </html>
+<script src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            type : "GET",
+            url  : "<%=basePath%>getSubject",
+            success: function(result) {
+                var htmlappend = '';
+             for(var i=0;i<result.length;i++){
+              htmlappend += '<option value="'+result[i].id+'">'+result[i].subjectName+'</option>';
+             }
+                $("#type").append(htmlappend);
+            }
+        });
+	});
+</script>

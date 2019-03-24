@@ -6,6 +6,8 @@ import top.tsep.dao.SubjectDao;
 import top.tsep.pojo.SubjectEntity;
 import top.tsep.service.SubjectService;
 
+import java.util.List;
+
 @Service("subjectService")
 public class SubjectServiceImpl implements SubjectService {
 
@@ -14,5 +16,9 @@ public class SubjectServiceImpl implements SubjectService {
     
     public SubjectEntity selectByName(String subject_name){
         return subjectDao.selectByName(subject_name);
+    }
+
+    public List<SubjectEntity> findAllSubject(){
+        return subjectDao.findAllSubject();
     }
 }

@@ -69,4 +69,8 @@
     set subject_name = #{subjectName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findAllSubject" resultMap="BaseResultMap">
+    SELECT * from ts_subject
+  </select>
 </mapper>
