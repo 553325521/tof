@@ -23,6 +23,8 @@
     from ts_subject
     where subject_name = #{subjectName,jdbcType=VARCHAR}
   </select>
+  
+  
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ts_subject
@@ -34,7 +36,7 @@
     values (#{id,jdbcType=INTEGER}, #{subjectName,jdbcType=VARCHAR})
   </insert>
 
-  <insert id="insertSelective" parameterType="top.tsep.pojo.SubjectEntity" >
+  <insert id="insertSelective" parameterType="top.tsep.pojo.SubjectEntity" useGeneratedKeys="true" keyProperty="id">
     insert into ts_subject
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

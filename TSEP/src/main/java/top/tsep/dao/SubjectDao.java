@@ -1,5 +1,7 @@
 package top.tsep.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import top.tsep.pojo.SubjectEntity;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public interface SubjectDao {
 
     int updateByPrimaryKey(SubjectEntity record);
 
-    SubjectEntity selectByName(String subject_name);
+    SubjectEntity selectByName(@Param("subjectName")String subjectName);
 
     List<SubjectEntity> findAllSubject();
 }

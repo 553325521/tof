@@ -18,6 +18,8 @@
 <link href="<%=basePath%>css/cropper.min.css" rel="stylesheet">
 <link href="<%=basePath%>font-awesome/css/font-awesome.css"
 	rel="stylesheet">
+<!-- Toastr style -->
+<link href="<%=basePath%>css/plugins/toastr/toastr.min.css" rel="stylesheet">
 <link href="<%=basePath%>css/plugins/steps/jquery.steps.css"
 	rel="stylesheet">
 <link href="<%=basePath%>css/animate.css" rel="stylesheet">
@@ -315,7 +317,8 @@ button {
 	<!-- Jquery Validate -->
 	<script src="<%=basePath%>js/plugins/validate/jquery.validate.min.js"></script>
 
-
+	<script src="<%=basePath%>js/plugins/toastr/toastr.min.js"></script>
+	
 	<script>
 		var uploadedImageURL = undefined;
 		// 修改自官方demo的js
@@ -438,8 +441,28 @@ button {
 					var parameter = $.param({
 						"userTx" : base64url
 					}) + "&" + form.serialize();
-					$.post('<%=basePath%>/register', parameter, function(data) {
-						console.info(data);
+					$.post("<%=basePath%>/register", parameter, function(data) {
+						if(data.resultType == '0000'){
+							location.href="<%=basePath%>/login.jsp";
+						}else{
+							 toastr.options = {
+									  "closeButton": true,
+									  "debug": false,
+									  "progressBar": true,
+									  "preventDuplicates": true,
+									  "positionClass": "toast-bottom-right",
+									  "onclick": null,
+									  "showDuration": "400",
+									  "hideDuration": "1000",
+									  "timeOut": "7000",
+									  "extendedTimeOut": "1000",
+									  "showEasing": "swing",
+									  "hideEasing": "linear",
+									  "showMethod": "fadeIn",
+									  "hideMethod": "fadeOut"
+									};
+							 toastr['warning']('科目不存在!','注册失败');
+						}
 					}, "json")
 					console.info(parameter);
 				}

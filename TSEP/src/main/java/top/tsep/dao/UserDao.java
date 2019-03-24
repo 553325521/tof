@@ -1,5 +1,7 @@
 package top.tsep.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import top.tsep.pojo.UserEntity;
 
 public interface UserDao {
@@ -50,4 +52,7 @@ public interface UserDao {
      * @mbggenerated
      */
     int updateByPrimaryKey(UserEntity record);
+    
+    
+    int insertUserSubject(@Param("userId")int userId,@Param("subjectId")int subjectId);
 }
