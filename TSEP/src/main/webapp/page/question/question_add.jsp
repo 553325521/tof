@@ -103,7 +103,7 @@
 							<label class="col-sm-2 col-form-label">内容</label>
 							<div class="mail-box">
 								<div class="mail-text h-200">
-									<div class="summernote" id="content" name="content">
+									<div class="summernote" id="content">
 										<br /> <br />
 									</div>
 									<div class="clearfix"></div>
@@ -117,7 +117,7 @@
 
 							<div class="col-sm-10">
 								<select data-placeholder="选择标签" class="chosen-select" multiple
-									style="width:350px;" tabindex="4" id="tag" name="tag">
+									style="width:350px;" tabindex="4" id="tag">
 									<option value="123">A001</option>
 									<option value="3">A002</option>
 									<option value="4">A003</option>
@@ -132,7 +132,7 @@
 							<label class="col-sm-2 col-form-label">难度</label>
 							<div class="col-sm-10">
 								<div class="m-r-md inline">
-									<input type="text" id="difficult" value="25" class="dial m-r"
+									<input type="text" id="difficult" value="25" name="difficult" class="dial m-r"
 										data-fgColor="#1AB394" data-width="85" data-height="85" />
 								</div>
 							</div>
@@ -178,9 +178,18 @@
 		});
 	});
 	function save(){
-	    console.info($("#tag").val());
+	    var tag = $("#tag").val();
+	     tag = tag.join(",");
+	    var content = $('.summernote').summernote('code');
         var form = $("#questionForm");
-        var parameter = form.serialize();
+        var parameter = $.param({
+			"tag" : tag
+		}) + "&" + form.serialize();
+       
+        parameter = $.param({
+			"content" : content
+		}) + "&" + parameter;
+        
         $.post("<%=basePath%>/save", parameter, function(data) {
             if(data.resultType == '0000'){
                 location.href="<%=basePath%>question.jsp";
