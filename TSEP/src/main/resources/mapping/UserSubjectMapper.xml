@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.tsep.dao.UserSubjectDao" >
+  <resultMap id="BaseResultMap" type="top.tsep.pojo.UserSubjectEntity" >
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="top.tsep.pojo.UserSubjectEntity" >
+    insert into ts_user_subject (user_id, subject_id)
+    values (#{userId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER})
+  </insert>
+
+  <insert id="insertSelective" parameterType="top.tsep.pojo.UserSubjectEntity" >
+    insert into ts_user_subject
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="subjectId != null" >
+        subject_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null" >
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

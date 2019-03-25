@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.tsep.dao.QuestionDao" >
+  <resultMap id="BaseResultMap" type="top.tsep.pojo.QuestionEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="creat_time" property="creatTime" jdbcType="VARCHAR" />
+    <result column="difficult" property="difficult" jdbcType="VARCHAR" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="visit_num" property="visitNum" jdbcType="INTEGER" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="attribute1" property="attribute1" jdbcType="VARCHAR" />
+    <result column="attribute2" property="attribute2" jdbcType="VARCHAR" />
+    <result column="attribute3" property="attribute3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, content, subject_id, user_id, creat_time, difficult, classify, visit_num, 
+    tag, attribute1, attribute2, attribute3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ts_question
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ts_question
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.tsep.pojo.QuestionEntity" >
+    insert into ts_question (id, title, content, 
+      subject_id, user_id, creat_time, 
+      difficult, classify, visit_num, 
+      tag, attribute1, attribute2, 
+      attribute3)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{subjectId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{creatTime,jdbcType=VARCHAR}, 
+      #{difficult,jdbcType=VARCHAR}, #{classify,jdbcType=VARCHAR}, #{visitNum,jdbcType=INTEGER}, 
+      #{tag,jdbcType=VARCHAR}, #{attribute1,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}, 
+      #{attribute3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="top.tsep.pojo.QuestionEntity" >
+    insert into ts_question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="subjectId != null" >
+        subject_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="difficult != null" >
+        difficult,
+      </if>
+      <if test="classify != null" >
+        classify,
+      </if>
+      <if test="visitNum != null" >
+        visit_num,
+      </if>
+      <if test="tag != null" >
+        tag,
+      </if>
+      <if test="attribute1 != null" >
+        attribute1,
+      </if>
+      <if test="attribute2 != null" >
+        attribute2,
+      </if>
+      <if test="attribute3 != null" >
+        attribute3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null" >
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="difficult != null" >
+        #{difficult,jdbcType=VARCHAR},
+      </if>
+      <if test="classify != null" >
+        #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="visitNum != null" >
+        #{visitNum,jdbcType=INTEGER},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute1 != null" >
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null" >
+        #{attribute3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.tsep.pojo.QuestionEntity" >
+    update ts_question
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null" >
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="difficult != null" >
+        difficult = #{difficult,jdbcType=VARCHAR},
+      </if>
+      <if test="classify != null" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="visitNum != null" >
+        visit_num = #{visitNum,jdbcType=INTEGER},
+      </if>
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute1 != null" >
+        attribute1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        attribute2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute3 != null" >
+        attribute3 = #{attribute3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.tsep.pojo.QuestionEntity" >
+    update ts_question
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=VARCHAR},
+      difficult = #{difficult,jdbcType=VARCHAR},
+      classify = #{classify,jdbcType=VARCHAR},
+      visit_num = #{visitNum,jdbcType=INTEGER},
+      tag = #{tag,jdbcType=VARCHAR},
+      attribute1 = #{attribute1,jdbcType=VARCHAR},
+      attribute2 = #{attribute2,jdbcType=VARCHAR},
+      attribute3 = #{attribute3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

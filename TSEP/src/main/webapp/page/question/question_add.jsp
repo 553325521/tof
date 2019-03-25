@@ -80,7 +80,7 @@
 							<label class="col-sm-2 col-form-label">标题</label>
 
 							<div class="col-sm-10" style="padding-left:0">
-								<input type="text" name="question_title" class="form-control">
+								<input type="text" id="title" name="title" class="form-control">
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
@@ -89,8 +89,8 @@
 
 							<div class="col-sm-10" style="padding-left:0">
 								<select data-placeholder="选择分类"
-									class="chosen-select" tabindex="2">
-									<option value="">问题</option>
+									class="chosen-select" tabindex="2" id="classify" name="classify">
+									<option value="Question">问题</option>
 									<option value="United States">笔记</option>
 									<option value="United Kingdom">心得</option>
 									<option value="Afghanistan">随笔</option>
@@ -103,7 +103,7 @@
 							<label class="col-sm-2 col-form-label">内容</label>
 							<div class="mail-box">
 								<div class="mail-text h-200">
-									<div class="summernote">
+									<div class="summernote" id="content">
 										<br /> <br />
 									</div>
 									<div class="clearfix"></div>
@@ -117,7 +117,7 @@
 
 							<div class="col-sm-10">
 								<select data-placeholder="选择标签" class="chosen-select" multiple
-									style="width:350px;" tabindex="4">
+									style="width:350px;" tabindex="4" id="tag">
 									<option value="">A001</option>
 									<option value="United States">A002</option>
 									<option value="United Kingdom">A003</option>
@@ -132,7 +132,7 @@
 							<label class="col-sm-2 col-form-label">难度</label>
 							<div class="col-sm-10">
 								<div class="m-r-md inline">
-									<input type="text" value="25" class="dial m-r"
+									<input type="text" id="difficult" value="25" class="dial m-r"
 										data-fgColor="#1AB394" data-width="85" data-height="85" />
 								</div>
 							</div>
@@ -140,8 +140,8 @@
 						<div class="hr-line-dashed"></div>
 						<div class="form-group row">
 							<div class="col-sm-4 col-sm-offset-2" style="margin-left: 80%;">
-								<button class="btn btn-white btn-sm" type="submit">取消</button>
-								<button class="btn btn-primary btn-sm" type="submit">保存更改</button>
+								<button class="btn btn-white btn-sm" type="cancel">取消</button>
+								<button class="btn btn-primary btn-sm" type="submit" onclick="save()">保存更改</button>
 							</div>
 						</div>
 					</form>
@@ -163,6 +163,8 @@
 <!-- Chosen -->
 <script src="<%=basePath%>js/plugins/chosen/chosen.jquery.js"></script>
 
+<script src="<%=basePath%>js/plugins/toastr/toastr.min.js"></script>
+
 <script>
 	$(document).ready(function() {
 
@@ -175,4 +177,31 @@
 			width : "100%"
 		});
 	});
+	function save(){
+        var form = $("#questionForm");
+        var parameter = form.serialize();
+        $.post("<%=basePath%>/save", parameter, function(data) {
+            if(data.resultType == '0000'){
+                location.href="<%=basePath%>question.jsp";
+            }else{
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "progressBar": true,
+                    "preventDuplicates": true,
+                    "positionClass": "toast-bottom-right",
+                    "onclick": null,
+                    "showDuration": "400",
+                    "hideDuration": "1000",
+                    "timeOut": "7000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                toastr['warning']('科目不存在!','注册失败');
+            }
+        });
+	}
 </script>
