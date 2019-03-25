@@ -94,9 +94,15 @@ public class UserServiceImpl implements UserService {
 				r.setResultType("9999");
 				r.setResultContent("邮箱或者密码不正确");
 			}else{
-				checkLoginStatus.putUsers(user);
-				r.setResultType("0000");
-				r.setResultContent("登录成功");
+				Map<String,Object> subject = userDao.checkSubject(u.getId(),Integer.parseInt(user.getAttribute2()));
+				if(subject == null){
+					r.setResultType("9999");
+					r.setResultContent("选择科目不存在");
+				}else{
+					checkLoginStatus.putUsers(user);
+					r.setResultType("0000");
+					r.setResultContent("登录成功");
+				}
 			}
 		}
 		

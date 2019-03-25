@@ -1,5 +1,7 @@
 package top.tsep.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 import top.tsep.pojo.UserEntity;
@@ -61,5 +63,8 @@ public interface UserDao {
     
     
     int initPwdByEmail(UserEntity record);
+    
+    
+    Map<String,Object> checkSubject(@Param("userId")int userId,@Param("subjectId")int subjectId);
     
 }
