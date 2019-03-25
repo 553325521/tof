@@ -103,7 +103,7 @@
 							<label class="col-sm-2 col-form-label">内容</label>
 							<div class="mail-box">
 								<div class="mail-text h-200">
-									<div class="summernote" id="content">
+									<div class="summernote" id="content" name="content">
 										<br /> <br />
 									</div>
 									<div class="clearfix"></div>
@@ -117,13 +117,13 @@
 
 							<div class="col-sm-10">
 								<select data-placeholder="选择标签" class="chosen-select" multiple
-									style="width:350px;" tabindex="4" id="tag">
-									<option value="">A001</option>
-									<option value="United States">A002</option>
-									<option value="United Kingdom">A003</option>
-									<option value="Afghanistan">A004</option>
-									<option value="Aland Islands">A005</option>
-									<option value="Burkina Faso">A006</option>
+									style="width:350px;" tabindex="4" id="tag" name="tag">
+									<option value="123">A001</option>
+									<option value="3">A002</option>
+									<option value="4">A003</option>
+									<option value="5">A004</option>
+									<option value="6">A005</option>
+									<option value="7">A006</option>
 								</select>
 							</div>
 						</div>
@@ -141,7 +141,7 @@
 						<div class="form-group row">
 							<div class="col-sm-4 col-sm-offset-2" style="margin-left: 80%;">
 								<button class="btn btn-white btn-sm" type="cancel">取消</button>
-								<button class="btn btn-primary btn-sm" type="submit" onclick="save()">保存更改</button>
+								<button class="btn btn-primary btn-sm" type="button" onclick="save()">保存更改</button>
 							</div>
 						</div>
 					</form>
@@ -178,6 +178,7 @@
 		});
 	});
 	function save(){
+	    console.info($("#tag").val());
         var form = $("#questionForm");
         var parameter = form.serialize();
         $.post("<%=basePath%>/save", parameter, function(data) {

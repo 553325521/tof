@@ -11,6 +11,7 @@ import top.tsep.service.SubjectService;
 import top.tsep.service.UserService;
 import top.tsep.utils.ResultMap;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
@@ -21,7 +22,7 @@ public class QuestionController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
-    public ResultMap save(@RequestParam Map<String,Object> map) {
-        return questionService.save(map);
+    public ResultMap save(@RequestParam Map<String,Object> map, HttpServletRequest request) {
+        return questionService.save(map,request);
     }
 }
