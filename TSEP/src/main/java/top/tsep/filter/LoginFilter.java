@@ -18,8 +18,8 @@ public class LoginFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		// 不过滤的uri
 		String[] notFilter = new String[] { "/img", "/login", "/ico", "/js", "/excel", "/css", "/upload", "/fonts",
-				"/login.jsp", "/register.jsp", "/email_templates", "/font-awesome", "/locales", "/pdf",
-				"/getSubject","/login","/register"};
+				"/login.jsp", "/register.jsp","/forgot_password.jsp", "/email_templates", "/font-awesome", "/locales", "/pdf",
+				"/getSubject","/login","/register","/updatePwd"};
 
 		// 请求的uri
 		String uri = request.getRequestURI();

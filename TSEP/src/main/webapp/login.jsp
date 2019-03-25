@@ -55,8 +55,8 @@
 
 						<button type="button" id="loginBtn" class="btn btn-primary block full-width m-b">登录</button>
 
-						<!-- <a href="#"> <small>忘记密码?</small>
-						</a> -->
+						<a href="<%=basePath%>forgot_password.jsp"> <small>忘记密码?</small>
+						</a>
 
 						<p class="text-muted text-center">
 							<small>还没有账号?</small>

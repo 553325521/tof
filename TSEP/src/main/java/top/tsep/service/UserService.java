@@ -24,4 +24,6 @@ public interface UserService {
 	*/
 	public ResultMap login(UserEntity user,HttpServletRequest request);
 	
+	public ResultMap updatePwd(UserEntity user);
+	
 }

@@ -36,4 +36,12 @@ public class LoginController {
     public ResultMap login(UserEntity user,HttpServletRequest request){
         return userService.login(user, request);
     }
+    
+    @RequestMapping(value = "updatePwd",method = RequestMethod.POST)
+    @ResponseBody
+    public ResultMap updatePwd(String  email){
+    	UserEntity u = new UserEntity();
+    	u.setEmail(email);
+        return userService.updatePwd(u);
+    }
 }

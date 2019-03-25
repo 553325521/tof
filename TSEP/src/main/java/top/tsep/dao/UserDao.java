@@ -59,4 +59,7 @@ public interface UserDao {
     
     UserEntity checkLogin(UserEntity record);
     
+    
+    int initPwdByEmail(UserEntity record);
+    
 }

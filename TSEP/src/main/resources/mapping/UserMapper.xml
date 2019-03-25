@@ -202,7 +202,12 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-
+  
+  <update id="initPwdByEmail" parameterType="top.tsep.pojo.UserEntity" >
+    update ts_user
+    set pass_word = #{passWord,jdbcType=VARCHAR} 
+   where email = #{email,jdbcType=INTEGER}
+  </update>
 
   <!--更新-->
   <update id="updateByPrimaryKey" parameterType="top.tsep.pojo.UserEntity" >
