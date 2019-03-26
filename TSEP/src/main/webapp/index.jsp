@@ -244,8 +244,5 @@
 			</div>
 
 		</div>
-
-
-
 	</div>
 	<jsp:include page="page/tool/footer.jsp"></jsp:include>

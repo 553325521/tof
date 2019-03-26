@@ -177,39 +177,46 @@
 </div>
 <jsp:include page="/page/tool/footer.jsp"></jsp:include>
 <script type="text/javascript">
-//产生随机字符串
-function randomString(len) {
-	　　len = len || 32;
-	　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-	　　var maxPos = $chars.length;
-	　　var pwd = '';
-	　　for (i = 0; i < len; i++) {
-	　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-	　　}
-	　　return pwd;
-}
-var username = randomString(4);
-var ws; //一个ws对象就是一个通话管理
-var target = "ws://localhost/TSEP/chat?username="+username;
-
-
-$(function(){
 	
-	 //根据浏览器的不同区创建不同的websocket对象
-	   if ('WebSocket' in window) {
-        ws = new WebSocket(target);
-    } else if ('MozWebSocket' in window) {
-        ws = new MozWebSocket(target);
-    } else {
-        alert('WebSocket is not supported by this browser.');
-        return;
-    }
-	   //发送消息
-	   ws.onmessage = function (event) {
-		  var obj = JSON.parse(event.data);
-		  console.log(obj);
-		 if(obj.currentUser == username){
-			 $(".chat-discussion").append(`<div class="chat-message right">
+	//产生随机字符串
+	function randomString(len) {
+		
+		len = len || 32;
+		var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+		var maxPos = $chars.length;
+		var pwd = '';
+		for (i = 0; i < len; i++) {
+			pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+		}
+		return pwd;
+	}
+	var username = randomString(4);
+	var ws; //一个ws对象就是一个通话管理
+	var target = "ws://localhost/TSEP/chat?username=" + username;
+	
+	//界面离开监听
+	function onbeforeunload_handler() {
+		ws.close();
+		return null;
+	}
+
+	$(function() {
+		//根据浏览器的不同区创建不同的websocket对象
+		if ('WebSocket' in window) {
+			ws = new WebSocket(target);
+		} else if ('MozWebSocket' in window) {
+			ws = new MozWebSocket(target);
+		} else {
+			alert('WebSocket is not supported by this browser.');
+			return;
+		}
+		window.onbeforeunload = onbeforeunload_handler;
+		//发送消息
+		ws.onmessage = function(event) {
+			var obj = JSON.parse(event.data);
+			console.log(obj);
+			if (obj.currentUser == username) {
+				$(".chat-discussion").append(`<div class="chat-message right">
 						<img class="message-avatar" src="<%=basePath%>img/a1.jpg"
 						alt="">
 					<div class="message">
@@ -218,8 +225,8 @@ $(function(){
 							class="message-content"> ${"${obj.context}"}  </span>
 					</div>
 				</div>`);
-		 }else{
-			 $(".chat-discussion").append(`<div class="chat-message left">
+			} else {
+				$(".chat-discussion").append(`<div class="chat-message left">
 						<img class="message-avatar" src="<%=basePath%>img/a2.jpg"
 						alt="">
 					<div class="message">
@@ -228,33 +235,33 @@ $(function(){
 							class="message-content">${"${obj.context}"}</span>
 					</div>
 				</div>`);
-		 }
-		  /* if(obj.welcome != null){
-			  $("#content").append(obj.welcome + "<br>");
-		  }
+			}
+			/* if(obj.welcome != null){
+				  $("#content").append(obj.welcome + "<br>");
+			}
 
-		  if(obj.context != null){
-			  $("#content").append(obj.context);
-		  }
-		  
-		  if(obj.username != null){
-			  //获取前先清空
-			  $("#userList").html("");
-			  //循环用户
-			  $(obj.username).each(function(){
-				  $("#userList").append(this + "<br>");
-			  });
-		  } */
-		  
-    };
-    ws.close = function(){
- 	   //关闭websocket
- 	   ws.close();
-    };	 
-	$("#send").click(function(){
-		var msg = $(".message-input").val();
-		ws.send(msg);
-		$(".message-input").val("");
+			if(obj.context != null){
+				  $("#content").append(obj.context);
+			}
+			
+			if(obj.username != null){
+				  //获取前先清空
+				  $("#userList").html("");
+				  //循环用户
+				  $(obj.username).each(function(){
+					  $("#userList").append(this + "<br>");
+				  });
+			} */
+
+		};
+		ws.close = function() {
+			//关闭websocket
+			ws.close();
+		};
+		$("#send").click(function() {
+			var msg = $(".message-input").val();
+			ws.send(msg);
+			$(".message-input").val("");
+		})
 	})
-})
 </script>

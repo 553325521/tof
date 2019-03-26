@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -40,6 +38,8 @@ public class ChatServer {
 		users.add(username);
 		String msg = "欢迎" + username + "来到聊天室!";
 		System.out.println(msg);
+		System.out.println("在线人数1:"+users.size());
+		System.out.println("在线人数2:"+sessions.size());
 //		Message message = new Message();
 //		message.setWelcome(msg);
 //		message.setUsername(users);
@@ -80,7 +80,11 @@ public class ChatServer {
      */
     @OnClose
     public void onClose(Session session) {
+    	System.out.println(username+"退出聊天室");
         sessions.remove(session);
+        users.remove(username);
+        System.out.println("在线人数1:"+users.size());
+		System.out.println("在线人数2:"+sessions.size());
     }
     
     @OnError
