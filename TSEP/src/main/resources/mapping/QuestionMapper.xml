@@ -185,4 +185,13 @@
       attribute3 = #{attribute3,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectBysubjectId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+     id, title, content, subject_id, user_id, creat_time, difficult, classify, visit_num,
+    tag, u.id as attribute1, attribute2, attribute3
+    from ts_question q
+    LEFT JOIN ts_user u ON q.user_id = u.id
+    where subject_id = #{subjectId,jdbcType=INTEGER}
+  </select>
 </mapper>
