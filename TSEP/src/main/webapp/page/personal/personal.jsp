@@ -66,6 +66,9 @@
 					<li><a class="J_menuItem" href="<%=basePath%>page/personal/my_operation.jsp"> <i
 							class="fa fa-star-o"></i> <span class="nav-label">全部动态</span>
 					</a></li>
+					<li><a class="J_menuItem" href="<%=basePath%>page/personal/my_tag.jsp"> <i
+							class="fa fa-tags"></i> <span class="nav-label">文章标签</span>
+					</a></li>
 					<li><a class="J_menuItem" href="minor.html"> <i
 							class="fa fa-th-large"></i> <span class="nav-label">Minor
 								view</span>
