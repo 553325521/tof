@@ -10,6 +10,7 @@ import top.tsep.pojo.SubjectEntity;
 import top.tsep.pojo.UserEntity;
 import top.tsep.service.SubjectService;
 import top.tsep.service.UserService;
+import top.tsep.utils.CheckLoginStatus;
 import top.tsep.utils.ResultMap;
 
 import java.util.List;
@@ -43,5 +44,12 @@ public class LoginController {
     	UserEntity u = new UserEntity();
     	u.setEmail(email);
         return userService.updatePwd(u);
+    }
+    
+    @RequestMapping(value = "loginOut",method = RequestMethod.GET)
+    public String loginOut(HttpServletRequest request){
+    	CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
+    	checkLoginStatus.removeSession();
+        return "login";
     }
 }

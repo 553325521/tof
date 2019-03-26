@@ -82,21 +82,20 @@
 <script src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
 <script src="<%=basePath%>js/plugins/toastr/toastr.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $.ajax({
-            type : "GET",
-            url  : "<%=basePath%>getSubject",
-            success: function(result) {
-                var htmlappend = '';
-             for(var i=0;i<result.length;i++){
-              /* htmlappend += '<option value="'+result[i].id+'">'+result[i].subjectName+'</option>'; */
-            	 htmlappend += `<option value="${"${result[i].id}"}">${"${result[i].subjectName}"}</option>`;
-             }
-                $("#attribute2").append(htmlappend);
-            }
-        });
-	});
     $(function(){
+    	  $.ajax({
+              type : "GET",
+              url  : "<%=basePath%>getSubject",
+              success: function(result) {
+                  var htmlappend = '';
+               for(var i=0;i<result.length;i++){
+                /* htmlappend += '<option value="'+result[i].id+'">'+result[i].subjectName+'</option>'; */
+              	 htmlappend += `<option value="${"${result[i].id}"}">${"${result[i].subjectName}"}</option>`;
+               }
+                  $("#attribute2").append(htmlappend);
+              }
+          });
+    	  
     	$("#loginBtn").click(function(){
     		var loginInfo = $("#loginForm").serialize();
     		$.post("<%=basePath%>/login",loginInfo,function(data){

@@ -167,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
                 <li>
-                    <a href="<%=basePath%>/login.jsp">
+                    <a href="<%=basePath%>loginOut">
                         <i class="fa fa-sign-out"></i> 注销
                     </a>
                 </li>
