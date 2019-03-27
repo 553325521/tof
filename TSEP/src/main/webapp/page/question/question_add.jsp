@@ -11,6 +11,8 @@
 	rel="stylesheet">
 <link href="<%=basePath%>css/plugins/summernote/summernote-bs4.css"
 	rel="stylesheet">
+<!-- Toastr style -->
+<link href="<%=basePath%>css/plugins/toastr/toastr.min.css" rel="stylesheet">
 <div class="wrapper wrapper-content animated fadeInRight">
 	<div class="row">
 		<div class="col-md-4">
@@ -80,7 +82,7 @@
 							<label class="col-sm-2 col-form-label">标题</label>
 
 							<div class="col-sm-10" style="padding-left:0">
-								<input type="text" id="title" name="title" class="form-control">
+								<input type="text" id="title" name="title" class="form-control required">
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
@@ -89,12 +91,12 @@
 
 							<div class="col-sm-10" style="padding-left:0">
 								<select data-placeholder="选择分类"
-									class="chosen-select" tabindex="2" id="classify" name="classify">
-									<option value="Question">问题</option>
-									<option value="United States">笔记</option>
-									<option value="United Kingdom">心得</option>
-									<option value="Afghanistan">随笔</option>
-									<option value="Aland Islands">分享</option>
+									class="chosen-select required" tabindex="2" id="classify" name="classify">
+									<option value="问题">问题</option>
+									<option value="笔记">笔记</option>
+									<option value="心得">心得</option>
+									<option value="随笔">随笔</option>
+									<option value="分享">分享</option>
 								</select>
 							</div>
 						</div>
@@ -176,7 +178,9 @@
 		$('.chosen-select').chosen({
 			width : "100%"
 		});
+
 	});
+
 	function save(){
 	    var tag = $("#tag").val();
 	     tag = tag.join(",");
@@ -192,7 +196,7 @@
         
         $.post("<%=basePath%>/save", parameter, function(data) {
             if(data.resultType == '0000'){
-                location.href="<%=basePath%>question.jsp";
+                location.href="<%=basePath%>page/question/question.jsp";
             }else{
                 toastr.options = {
                     "closeButton": true,
@@ -210,7 +214,7 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
-                toastr['warning']('科目不存在!','注册失败');
+                toastr['warning']('您还有未填项!','发表失败');
             }
         });
 	}

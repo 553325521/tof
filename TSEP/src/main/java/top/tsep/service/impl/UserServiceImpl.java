@@ -99,7 +99,8 @@ public class UserServiceImpl implements UserService {
 					r.setResultType("9999");
 					r.setResultContent("选择科目不存在");
 				}else{
-					checkLoginStatus.putUsers(user);
+					u.setAttribute2(subject.get("subject_id").toString());
+					checkLoginStatus.putUsers(u);
 					r.setResultType("0000");
 					r.setResultContent("登录成功");
 				}

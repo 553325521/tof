@@ -60,223 +60,223 @@
 
 					<div class="table-responsive">
 						<table class="table table-hover issue-tracker">
-							<tbody>
-								<tr>
-									<td><span class="label label-primary">添加</span></td>
-									<td class="issue-info"><a href="<%=basePath%>page/question/question_detail.jsp">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">4/5</span> 2d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-primary">添加</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">3,2</span> 2d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-primary">添加</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">1,2</span> 1d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-primary">添加</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">4,2</span> 3d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning">固定</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">1,2</span> 2d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning">固定</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">3,2</span> 3d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning">固定</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">3,2</span> 2d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning">固定</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">3,2</span> 2d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning">固定</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">5,7</span> 4d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning">固定</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">2,7</span> 3d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger">漏洞</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">0.52,1.041</span> 2d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger">漏洞</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">3,2</span> 2d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger">漏洞</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">1,2</span> 1d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger">漏洞</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">4,2</span> 3d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger">漏洞</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">1,2</span> 2d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger">漏洞</span></td>
-									<td class="issue-info"><a href="#">
-											时间从何而来？为什么时间似乎是流动的？ </a> <small>
-											在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>
-									<td>火星一号</td>
-									<td>2017.12.12 10:00</td>
-									<td><span class="pie">3,2</span> 3d</td>
-									<td class="text-right">
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-										<button class="btn btn-white btn-xs">标签</button>
-									</td>
-								</tr>
+							<tbody id="questionList">
+								<%--<tr>--%>
+									<%--<td><span class="label label-primary">添加</span></td>--%>
+									<%--<td class="issue-info"><a href="<%=basePath%>page/question/question_detail.jsp">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">4/5</span> 2d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-primary">添加</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">3,2</span> 2d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-primary">添加</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">1,2</span> 1d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-primary">添加</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">4,2</span> 3d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-warning">固定</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">1,2</span> 2d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-warning">固定</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">3,2</span> 3d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-warning">固定</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">3,2</span> 2d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-warning">固定</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">3,2</span> 2d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-warning">固定</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">5,7</span> 4d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-warning">固定</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">2,7</span> 3d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-danger">漏洞</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">0.52,1.041</span> 2d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-danger">漏洞</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">3,2</span> 2d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-danger">漏洞</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">1,2</span> 1d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-danger">漏洞</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">4,2</span> 3d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-danger">漏洞</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">1,2</span> 2d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td><span class="label label-danger">漏洞</span></td>--%>
+									<%--<td class="issue-info"><a href="#">--%>
+											<%--时间从何而来？为什么时间似乎是流动的？ </a> <small>--%>
+											<%--在我们看来，宇宙万物皆是永恒变化的，所以我们产生了时间的概念。 </small></td>--%>
+									<%--<td>火星一号</td>--%>
+									<%--<td>2017.12.12 10:00</td>--%>
+									<%--<td><span class="pie">3,2</span> 3d</td>--%>
+									<%--<td class="text-right">--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+										<%--<button class="btn btn-white btn-xs">标签</button>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
 							</tbody>
 						</table>
 					</div>
@@ -289,3 +289,22 @@
 
 </div>
 <jsp:include page="/page/tool/footer.jsp"></jsp:include>
+
+<script>
+    $(function() {
+        $.ajax({
+            type: "GET",
+            url: "<%=basePath%>questionlist",
+            success: function (result) {
+                var htmlappend = '';
+                for (var i = 0; i < result.length; i++) {
+                    htmlappend += '<tr><td><span class="label label-primary">'+result[i].classify+'</span></td>' +
+                        '<td class="issue-info"><a href="#">'+result[i].title+'</a></td><td>'+result[i].nick_name+'</td>' +
+                        '<td>'+result[i].creatTime+'</td><td><span class="pie">'+result[i].difficult+',100'+'</span> 3d</td></tr>';
+                    <%--htmlappend += `<option value="${"${result[i].id}"}">${"${result[i].subjectName}"}</option>`;--%>
+                }
+                $("#questionList").append(htmlappend);
+            }
+        });
+    });
+</script>

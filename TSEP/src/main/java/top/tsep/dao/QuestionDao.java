@@ -2,6 +2,8 @@ package top.tsep.dao;
 
 import top.tsep.pojo.QuestionEntity;
 
+import java.util.List;
+
 public interface QuestionDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface QuestionDao {
     int updateByPrimaryKeySelective(QuestionEntity record);
 
     int updateByPrimaryKey(QuestionEntity record);
+
+    List<QuestionEntity> selectBysubjectId(Integer subjectId);
 }
