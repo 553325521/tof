@@ -32,7 +32,6 @@ public class ChatServer {
 	public void open(Session session) {
 		String query = session.getQueryString();
 		username = query.split("=")[1];
-		
 		//把每个session添加到用户通信管道里面去
 		sessions.add(session);
 		users.add(username);
@@ -40,10 +39,21 @@ public class ChatServer {
 		System.out.println(msg);
 		System.out.println("在线人数1:"+users.size());
 		System.out.println("在线人数2:"+sessions.size());
-//		Message message = new Message();
-//		message.setWelcome(msg);
-//		message.setUsername(users);
-//		broadcast(sessions,JSONObject.toJSONString(message));
+		//toMessage(session,"发给我自己");
+		Message message = new Message();
+		message.setUsername(users);
+		message.setCurrentUser(username);
+		message.setMsgType("self");
+		message.setMsgTime(new SimpleDateFormat("yyyy年MM月dd日-hh:mm:ss").format(new Date()));
+		message.setContext(username,"进入聊天室通知");
+		toMessage(session,JSONObject.toJSONString(message));
+		//通知在线所有人更新好友列表
+		message.setUsername(users);
+		message.setCurrentUser(username);
+		message.setMsgType("update_friend_list");
+		message.setMsgTime(new SimpleDateFormat("yyyy年MM月dd日-hh:mm:ss").format(new Date()));
+		message.setContext(username,"更新好友列表");
+		broadcast(sessions, JSONObject.toJSONString(message));
 	}
 	/**
 	 * 发送广播
@@ -62,6 +72,17 @@ public class ChatServer {
 				e.printStackTrace();
 			}
 		}
+	
+	public void toMessage(Session currentUser, String msg) {
+		try {
+			if (currentUser  != null) {
+				currentUser.getBasicRemote().sendText(msg);
+            }
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 接收前端传来的消息/发送消息
 	 */
@@ -74,6 +95,8 @@ public class ChatServer {
 		message.setMsgTime(new SimpleDateFormat("yyyy年MM月dd日-hh:mm:ss").format(new Date()));
 		message.setContext(username, msg);
 		broadcast(sessions,JSONObject.toJSONString(message));
+		
+		
 	}
 	 /*
      * 客户端断开链接后将其从线程安全的集合中移除

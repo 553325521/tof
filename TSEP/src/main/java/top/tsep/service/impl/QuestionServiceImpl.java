@@ -47,6 +47,7 @@ public class QuestionServiceImpl implements QuestionService {
 		UserEntity u = checkLoginStatus.getUsers();
 		q.setUserId(u.getId());
 		q.setSubjectId(Integer.parseInt(u.getAttribute2()));
+		q.setVisitNum(0);
 		questionDao.insertSelective(q);
 		r.setResultType("0000");
 		r.setResultContent("发表成功");

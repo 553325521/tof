@@ -214,45 +214,33 @@
 		//发送消息
 		ws.onmessage = function(event) {
 			var obj = JSON.parse(event.data);
-			console.log(obj);
-			if (obj.currentUser == username) {
-				$(".chat-discussion").append(`<div class="chat-message right">
-						<img class="message-avatar" src="<%=basePath%>img/a1.jpg"
-						alt="">
-					<div class="message">
-						<a class="message-author" href="#">${"${obj.currentUser}"}</a> <span
-							class="message-date"> ${"${obj.msgTime}"} </span> <span
-							class="message-content"> ${"${obj.context}"}  </span>
-					</div>
-				</div>`);
-			} else {
-				$(".chat-discussion").append(`<div class="chat-message left">
-						<img class="message-avatar" src="<%=basePath%>img/a2.jpg"
-						alt="">
-					<div class="message">
-						<a class="message-author" href="#">${"${obj.currentUser}"}</a> <span
-							class="message-date"> ${"${obj.msgTime}"} </span> <span
-							class="message-content">${"${obj.context}"}</span>
-					</div>
-				</div>`);
+			if(obj.msgType == 'self'){ //第一次进入聊天室(添加动态、更改在线状态)
+				console.info(obj.context);
+			}else if(obj.msgType == 'update_friend_list'){
+				
+			}else{
+				if (obj.currentUser == username) {
+					$(".chat-discussion").append(`<div class="chat-message right">
+							<img class="message-avatar" src="<%=basePath%>img/a1.jpg"
+							alt="">
+						<div class="message">
+							<a class="message-author" href="#">${"${obj.currentUser}"}</a> <span
+								class="message-date"> ${"${obj.msgTime}"} </span> <span
+								class="message-content"> ${"${obj.context}"}  </span>
+						</div>
+					</div>`);
+				} else {
+					$(".chat-discussion").append(`<div class="chat-message left">
+							<img class="message-avatar" src="<%=basePath%>img/a2.jpg"
+							alt="">
+						<div class="message">
+							<a class="message-author" href="#">${"${obj.currentUser}"}</a> <span
+								class="message-date"> ${"${obj.msgTime}"} </span> <span
+								class="message-content">${"${obj.context}"}</span>
+						</div>
+					</div>`);
+				}
 			}
-			/* if(obj.welcome != null){
-				  $("#content").append(obj.welcome + "<br>");
-			}
-
-			if(obj.context != null){
-				  $("#content").append(obj.context);
-			}
-			
-			if(obj.username != null){
-				  //获取前先清空
-				  $("#userList").html("");
-				  //循环用户
-				  $(obj.username).each(function(){
-					  $("#userList").append(this + "<br>");
-				  });
-			} */
-
 		};
 		ws.close = function() {
 			//关闭websocket

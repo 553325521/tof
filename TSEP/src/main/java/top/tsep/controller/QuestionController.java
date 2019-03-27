@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.tsep.pojo.QuestionEntity;
+import top.tsep.pojo.TagEntity;
 import top.tsep.pojo.UserEntity;
 import top.tsep.service.QuestionService;
 import top.tsep.service.SubjectService;
+import top.tsep.service.TagService;
 import top.tsep.service.UserService;
 import top.tsep.utils.CheckLoginStatus;
 import top.tsep.utils.ResultMap;
@@ -23,6 +25,9 @@ public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private TagService tagService;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
@@ -41,9 +46,11 @@ public class QuestionController {
 
     @RequestMapping(value = "/taglist", method = RequestMethod.GET)
     @ResponseBody
-    public List<QuestionEntity> taglist(@RequestParam Map<String,Object> map, HttpServletRequest request) {
+    public List<TagEntity> taglist(@RequestParam Map<String,Object> map, HttpServletRequest request) {
         CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
         UserEntity u = checkLoginStatus.getUsers();
-        return questionService.selectBysubjectId(Integer.parseInt(u.getAttribute2()));
+        map.put("subjectId",u.getAttribute2());
+        List<TagEntity> list = tagService.list(map);
+        return list;
     }
 }

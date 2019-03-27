@@ -119,13 +119,15 @@
 
 							<div class="col-sm-10">
 								<select data-placeholder="选择标签" class="chosen-select" multiple
-									style="width:350px;" tabindex="4" id="tag">
-									<option value="123">A001</option>
-									<option value="3">A002</option>
-									<option value="4">A003</option>
-									<option value="5">A004</option>
-									<option value="6">A005</option>
-									<option value="7">A006</option>
+									style="width:350px;" tabindex="4" id="tag" name="tag">
+									<option value="123">111</option>
+									<option value="3">222</option>
+									<option value="4">333</option>
+									<option value="5">444</option>
+									<option value="6">512</option>
+									<option value="17">666</option>
+									<option value="18">521</option>
+									<option value="28">666</option>
 								</select>
 							</div>
 						</div>
@@ -178,8 +180,21 @@
 		$('.chosen-select').chosen({
 			width : "100%"
 		});
-
 	});
+
+    $(function() {
+        $.ajax({
+            type: "GET",
+            url: "<%=basePath%>taglist",
+            success: function (result) {
+                var htmlappend = '';
+                for (var i = 0; i < result.length; i++) {
+                    htmlappend += `<option value="${"${result[i].id}"}">${"${result[i].tagName}"}</option>`;
+                }
+                $("#tag").append(htmlappend);
+            }
+        });
+    });
 
 	function save(){
 	    var tag = $("#tag").val();

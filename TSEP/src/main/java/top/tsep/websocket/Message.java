@@ -11,9 +11,16 @@ public class Message {
 	
 	private String msgTime;
 	
+	private String msgType;
+	
 	private String currentUser;
 	
-	
+	public String getMsgType() {
+		return msgType;
+	}
+	public void setMsgType(String msgType) {
+		this.msgType = msgType;
+	}
 	public String getCurrentUser() {
 		return currentUser;
 	}
