@@ -162,4 +162,11 @@ public class UserServiceImpl implements UserService {
 		return r;
 	}
 
+	@Override
+	public ResultMap accessChat(HttpServletRequest request) {
+		ResultMap r = new ResultMap();
+		
+		return null;
+	}
+
 }

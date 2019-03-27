@@ -26,4 +26,6 @@ public interface UserService {
 	
 	public ResultMap updatePwd(UserEntity user);
 	
+	public ResultMap accessChat(HttpServletRequest request);
+	
 }
