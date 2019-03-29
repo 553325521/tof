@@ -1,10 +1,9 @@
 package top.tsep.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.stereotype.Service;
 
 import top.tsep.pojo.UserEntity;
 import top.tsep.utils.ResultMap;
@@ -26,6 +25,8 @@ public interface UserService {
 	
 	public ResultMap updatePwd(UserEntity user);
 	
-	public ResultMap accessChat(HttpServletRequest request);
+	public ResultMap accessChat(HttpServletRequest request,String operaton);
+	
+	List<UserEntity> loadUserListBySubjectId(HttpServletRequest request);
 	
 }

@@ -86,7 +86,7 @@
 						<div class="col-md-3">
 							<div class="chat-users">
 								<div class="users-list">
-									<div class="chat-user">
+									<%-- <div class="chat-user">
 										<img class="chat-avatar" src="<%=basePath%>img/a4.jpg" alt="">
 										<div class="chat-user-name">
 											<a href="#">小明</a>
@@ -136,7 +136,7 @@
 										<div class="chat-user-name">
 											<a href="#">小明</a>
 										</div>
-									</div>
+									</div> --%>
 
 
 								</div>
@@ -195,12 +195,64 @@
 	var target = "ws://localhost/TSEP/chat?username=" + username;
 	
 	//界面离开监听
-	function onbeforeunload_handler() {
-		ws.close();
-		return null;
+	<%-- function onbeforeunload_handler() {
+		$.post('<%=basePath%>user/accessOrOutChat',{"operation":"out"},function(data){
+			ws.send("update_friend_list");
+			ws.close();
+		},"json");
+		
+		return "确认退出?";
+	} --%>
+	<%-- window.onbeforeunload = function() {
+		$.post('<%=basePath%>user/accessOrOutChat',{"operation":"out"},function(data){
+			ws.send("update_friend_list");
+			ws.close();
+		},"json");
+		return "";
+	}; --%>
+	window.addEventListener('beforeunload', function (e) {
+		//debugger;
+		$.ajaxSettings.async = false;
+		$.post('<%=basePath%>user/accessOrOutChat',{"operation":"out"},function(data){
+			ws.send("update_friend_list");
+			ws.close();
+		},"json");
+		//console.log(123);
+	  // Cancel the event
+	  //e.preventDefault();
+	  // Chrome requires returnValue to be set
+	  //e.returnValue = '';
+	});
+	//更新好友列表
+	function refreshFriendList(){
+		$.post('<%=basePath%>user/loadAllFriend',null,function(data){
+			$(".users-list").empty();
+			for(var i = 0; i < data.length;i++){
+				if(data[i].attribute1 == '0'){
+					$(".users-list").append(`<div class="chat-user">
+							<span class="float-right label label-warning">${"${data[i].attribute3}"}</span> <img
+							class="chat-avatar" src="${"${data[i].userTx}"}" alt="">
+						<div class="chat-user-name">
+							<a href="javascript:void(0)">${"${data[i].nickName}"}</a>
+						</div>
+					</div>`);
+				}else{
+					$(".users-list").append(`<div class="chat-user">
+							<span class="float-right label label-primary">${"${data[i].attribute3}"}</span> <img
+							class="chat-avatar" src="${"${data[i].userTx}"}" alt="">
+						<div class="chat-user-name">
+							<a href="javascript:void(0)">${"${data[i].nickName}"}</a>
+						</div>
+					</div>`);
+				}
+				
+			}
+		},"json");
 	}
+	
 
 	$(function() {
+		/* refreshFriendList(); */
 		//根据浏览器的不同区创建不同的websocket对象
 		if ('WebSocket' in window) {
 			ws = new WebSocket(target);
@@ -210,14 +262,34 @@
 			alert('WebSocket is not supported by this browser.');
 			return;
 		}
-		window.onbeforeunload = onbeforeunload_handler;
+		/* window.onbeforeunload = onbeforeunload_handler; */
 		//发送消息
 		ws.onmessage = function(event) {
 			var obj = JSON.parse(event.data);
 			if(obj.msgType == 'self'){ //第一次进入聊天室(添加动态、更改在线状态)
-				console.info(obj.context);
+				$.post('<%=basePath%>user/accessOrOutChat',{"operation":"access"},function(data){
+					if(data.resultType == '0000'){
+						toastr.options = {
+		   						  "closeButton": true,
+		   						  "debug": false,
+		   						  "progressBar": true,
+		   						  "preventDuplicates": true,
+		   						  "positionClass": "toast-bottom-right",
+		   						  "onclick": null,
+		   						  "showDuration": "400",
+		   						  "hideDuration": "1000",
+		   						  "timeOut": "7000",
+		   						  "extendedTimeOut": "1000",
+		   						  "showEasing": "swing",
+		   						  "hideEasing": "linear",
+		   						  "showMethod": "fadeIn",
+		   						  "hideMethod": "fadeOut"
+		   						};
+		   				 	toastr['success']("欢迎"+data.resultContent+"来到聊天室",'聊天室通知');
+					}
+				},"json");
 			}else if(obj.msgType == 'update_friend_list'){
-				
+				refreshFriendList();
 			}else{
 				if (obj.currentUser == username) {
 					$(".chat-discussion").append(`<div class="chat-message right">

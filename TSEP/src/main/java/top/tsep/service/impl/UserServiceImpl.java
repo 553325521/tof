@@ -1,5 +1,7 @@
 package top.tsep.service.impl;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
@@ -18,12 +20,15 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import top.tsep.dao.LogDao;
 import top.tsep.dao.SubjectDao;
 import top.tsep.dao.UserDao;
+import top.tsep.pojo.LogEntity;
 import top.tsep.pojo.SubjectEntity;
 import top.tsep.pojo.UserEntity;
 import top.tsep.service.UserService;
 import top.tsep.utils.CheckLoginStatus;
+import top.tsep.utils.DateConvert;
 import top.tsep.utils.ResultMap;
 
 @Service("userService")
@@ -34,6 +39,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private LogDao logDao;
 	
 	@Override
 	public ResultMap register(Map<String, Object> parameter) {
@@ -163,10 +171,53 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ResultMap accessChat(HttpServletRequest request) {
+	public ResultMap accessChat(HttpServletRequest request,String operation) {
+		/*operation:access/out*/
 		ResultMap r = new ResultMap();
-		
-		return null;
+		CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
+		UserEntity cu = checkLoginStatus.getUsers();
+		/*更新在线状态*/
+		if(operation.equals("access")){
+			cu.setAttribute1("1");
+		}else{
+			cu.setAttribute1("0");
+		}
+		userDao.updateOnlineStatusByPrimaryKey(cu);
+		/*添加动态*/
+		LogEntity log = new LogEntity();
+		log.setUserId(cu.getId());
+		log.setSubjectId(Integer.parseInt(cu.getAttribute2()));
+		if(operation.equals("access")){
+			log.setOperationType("进入聊天室");
+			log.setOperationName("进入了聊天室");
+		}else{
+			log.setOperationType("离开聊天室");
+			log.setOperationName("离开了聊天室");
+		}
+		log.setOperationTime(DateConvert.dateToString(new Date()));
+		logDao.insertSelective(log);
+		r.setResultType("0000");
+		r.setResultContent(cu.getNickName());
+		return r;
+	}
+
+	@Override
+	public List<UserEntity> loadUserListBySubjectId(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
+		UserEntity currentLoginUser = checkLoginStatus.getUsers();
+		int subjectId = Integer.parseInt(currentLoginUser.getAttribute2());
+		System.out.println(DateConvert.dateToString(new Date()));
+		List<UserEntity> userList = userDao.loadListBySubjectId(subjectId);
+		System.out.println(DateConvert.dateToString(new Date()));
+		for(int i = 0;i < userList.size();i++){
+			if(userList.get(i).getAttribute1().equals("0")){
+				userList.get(i).setAttribute3("离线");
+			}else{
+				userList.get(i).setAttribute3("在线");
+			}
+		}
+		return userList;
 	}
 
 }

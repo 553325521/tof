@@ -1,5 +1,6 @@
 package top.tsep.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
@@ -56,6 +57,9 @@ public interface UserDao {
     int updateByPrimaryKey(UserEntity record);
     
     
+    int updateOnlineStatusByPrimaryKey(UserEntity record);
+    
+    
     int insertUserSubject(@Param("userId")int userId,@Param("subjectId")int subjectId);
     
     
@@ -66,5 +70,7 @@ public interface UserDao {
     
     
     Map<String,Object> checkSubject(@Param("userId")int userId,@Param("subjectId")int subjectId);
+    
+    List<UserEntity> loadListBySubjectId(@Param("subjectId")int subjectId);
     
 }

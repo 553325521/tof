@@ -39,6 +39,7 @@
 <!-- Peity demo -->
 <script src="<%=basePath%>js/demo/peity-demo.js"></script>
 
+<script src="<%=basePath%>js/plugins/toastr/toastr.min.js"></script>
 
 <script>
 	$(document).ready(function() {

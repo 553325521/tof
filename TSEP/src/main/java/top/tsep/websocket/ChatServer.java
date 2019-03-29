@@ -48,6 +48,12 @@ public class ChatServer {
 		message.setContext(username,"进入聊天室通知");
 		toMessage(session,JSONObject.toJSONString(message));
 		//通知在线所有人更新好友列表
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		message.setUsername(users);
 		message.setCurrentUser(username);
 		message.setMsgType("update_friend_list");
@@ -90,10 +96,14 @@ public class ChatServer {
 	public void onMessage(String msg, Session session) {
 		System.out.println("前端发送的消息为："+msg);
 		Message message = new Message();
+		if(msg.equals("update_friend_list")){
+			message.setMsgType("update_friend_list");
+			message.setContext(username,"更新好友列表");
+		}
 		message.setUsername(users);
 		message.setCurrentUser(username);
 		message.setMsgTime(new SimpleDateFormat("yyyy年MM月dd日-hh:mm:ss").format(new Date()));
-		message.setContext(username, msg);
+		
 		broadcast(sessions,JSONObject.toJSONString(message));
 		
 		

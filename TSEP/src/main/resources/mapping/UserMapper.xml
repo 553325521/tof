@@ -30,6 +30,18 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   
+  <select id="loadListBySubjectId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from ts_user
+    where id in (
+    	select user_id from 
+    	ts_user_subject
+    	where subject_id = #{subjectId,jdbcType=INTEGER}
+    )
+  </select>
+  
+  
   <select id="checkSubject" resultType="java.util.HashMap">
     select user_id,subject_id
     from ts_user_subject
@@ -233,6 +245,11 @@
       attribute1 = #{attribute1,jdbcType=VARCHAR},
       attribute2 = #{attribute2,jdbcType=VARCHAR},
       attribute3 = #{attribute3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateOnlineStatusByPrimaryKey" parameterType="top.tsep.pojo.UserEntity" >
+    update ts_user
+    set attribute1 = #{attribute1,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
