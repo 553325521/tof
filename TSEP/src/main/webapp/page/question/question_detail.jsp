@@ -244,6 +244,7 @@
 <script src="<%=basePath%>js/plugins/summernote/summernote-bs4.js"></script>
 
 <script>
+	var qId = "<%=request.getParameter("qId")%>";
     $(document).ready(function(){
 
         $('.summernote').summernote({

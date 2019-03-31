@@ -86,7 +86,7 @@
                 $("#questionList").append(counthtml);
                 for (var i = 0; i < result.length; i++) {
                     htmlappend += '<tr><td><span class="label label-primary">'+result[i].classify+'</span></td>' +
-                        '<td class="issue-info"><a href="<%=basePath%>page/question/question_detail.jsp">'+result[i].title+'</a><small></small></td><td>'+result[i].nick_name+'</td>' +
+                        '<td class="issue-info"><a href="<%=basePath%>page/question/question_detail.jsp?qId='+result[i].id+'">'+result[i].title+'</a><small></small></td><td>'+result[i].nick_name+'</td>' +
                         '<td>'+result[i].creatTime+'</td><td><span class="pie">'+result[i].difficult+'/100'+'</span> '+result[i].difficult+'d</td>';
                     htmlappend +='<td class="text-right">';
                     if(result[i].tagName!=null && result[i].tagName!=""){
@@ -116,7 +116,7 @@
                 $("#questionList").append(counthtml);
                 for (var i = 0; i < result.length; i++) {
                     htmlappend += '<tr><td><span class="label label-primary">'+result[i].classify+'</span></td>' +
-                        '<td class="issue-info"><a href="<%=basePath%>page/question/question_detail.jsp">'+result[i].title+'</a><small></small></td><td>'+result[i].nick_name+'</td>' +
+                        '<td class="issue-info"><a href="<%=basePath%>page/question/question_detail.jsp?qId="'+result[i].id+'>'+result[i].title+'</a><small></small></td><td>'+result[i].nick_name+'</td>' +
                         '<td>'+result[i].creatTime+'</td><td><span class="pie">'+result[i].difficult+'/100'+'</span> '+result[i].difficult+'d</td>';
                     htmlappend +='<td class="text-right">';
                     if(result[i].tagName!=null && result[i].tagName!=""){
