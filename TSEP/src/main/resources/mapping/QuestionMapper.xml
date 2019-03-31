@@ -194,5 +194,6 @@
     LEFT JOIN ts_user u ON q.user_id = u.id
     where subject_id = #{subjectId}
     <if test="titleName != null and titleName != ''"> and title like concat(concat('%',#{titleName}),'%') </if>
+    ORDER BY creat_time desc
   </select>
 </mapper>
