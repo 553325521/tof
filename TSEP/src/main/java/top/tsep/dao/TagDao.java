@@ -3,6 +3,7 @@ package top.tsep.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import top.tsep.pojo.TagEntity;
 
 public interface TagDao {
@@ -21,4 +22,6 @@ public interface TagDao {
     int updateByPrimaryKeySelective(TagEntity record);
 
     int updateByPrimaryKey(TagEntity record);
+
+    List<String>  findTagNameByList(@Param("tagId") String tagId);
 }

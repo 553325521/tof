@@ -103,4 +103,7 @@
 		subject_id = #{subjectId,jdbcType=INTEGER}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	<select id="findTagNameByList" resultType="java.lang.String"  parameterType="java.lang.String">
+		SELECT tag_name from ts_tag where id IN (${tagId});
+	</select>
 </mapper>

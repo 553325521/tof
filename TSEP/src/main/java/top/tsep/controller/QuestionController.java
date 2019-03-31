@@ -40,7 +40,8 @@ public class QuestionController {
     public List<QuestionEntity> questionlist(@RequestParam Map<String,Object> map, HttpServletRequest request) {
         CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
         UserEntity u = checkLoginStatus.getUsers();
-        List<QuestionEntity> list = questionService.selectBysubjectId(Integer.parseInt(u.getAttribute2()));
+        map.put("subjectId",u.getAttribute2());
+        List<QuestionEntity> list = questionService.selectBysubjectId(map);
         return list;
     }
 

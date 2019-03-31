@@ -1,8 +1,10 @@
 package top.tsep.dao;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import top.tsep.pojo.QuestionEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface QuestionDao {
     int deleteByPrimaryKey(Integer id);
@@ -17,5 +19,5 @@ public interface QuestionDao {
 
     int updateByPrimaryKey(QuestionEntity record);
 
-    List<QuestionEntity> selectBysubjectId(Integer subjectId);
+    List<QuestionEntity> selectBysubjectId(@RequestParam Map<String,Object> map);
 }

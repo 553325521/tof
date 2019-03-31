@@ -1,5 +1,6 @@
 package top.tsep.service;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import top.tsep.pojo.QuestionEntity;
 import top.tsep.utils.ResultMap;
 
@@ -14,5 +15,6 @@ public interface QuestionService {
      */
     public ResultMap save(Map<String,Object> parameter,HttpServletRequest request);
 
-    List<QuestionEntity> selectBysubjectId(Integer subjectId);
+    public List<QuestionEntity> selectBysubjectId(@RequestParam Map<String,Object>map);
+
 }

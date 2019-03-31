@@ -1,8 +1,11 @@
 package top.tsep.service.impl;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import top.tsep.dao.QuestionDao;
+import top.tsep.dao.TagDao;
 import top.tsep.pojo.QuestionEntity;
 import top.tsep.pojo.UserEntity;
 import top.tsep.service.QuestionService;
@@ -11,6 +14,7 @@ import top.tsep.utils.ResultMap;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +24,9 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Autowired
 	private QuestionDao questionDao;
+
+	@Autowired
+	private TagDao tagDao;
 
 	public ResultMap save(Map<String, Object> parameter,HttpServletRequest request) {
 		ResultMap r = new ResultMap();
@@ -54,7 +61,18 @@ public class QuestionServiceImpl implements QuestionService {
 		return r;
 	}
 
-	public List<QuestionEntity> selectBysubjectId(Integer subjectId){
-		return questionDao.selectBysubjectId(subjectId);
+	public List<QuestionEntity> selectBysubjectId(@RequestParam Map<String,Object> map) {
+		List<QuestionEntity> list = questionDao.selectBysubjectId(map);
+		for (int i = 0; i < list.size(); i++) {
+			String tagId = list.get(i).getTag();
+			if (tagId != "" && tagId != null) {
+				List<String> listTag = tagDao.findTagNameByList(tagId);
+				if (listTag != null && listTag.size() != 0){
+					String tagName = StringUtils.join(listTag.toArray(), ",");
+				    list.get(i).setTagName(tagName);
+				   }
+			}
+		}
+		return list;
 	}
 }

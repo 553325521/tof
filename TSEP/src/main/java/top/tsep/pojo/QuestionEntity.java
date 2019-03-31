@@ -21,6 +21,8 @@ public class QuestionEntity {
 
     private String tag;
 
+    private String tagName;
+
     private String nick_name;
 
     private String attribute1;
@@ -131,6 +133,14 @@ public class QuestionEntity {
 
     public void setNick_name(String nick_name) {
         this.nick_name = nick_name == null ? null : nick_name.trim();
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName == null ? null : tagName.trim();
+    }
+
+    public String getTagName() {
+        return tagName;
     }
 
 }

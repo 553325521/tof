@@ -120,14 +120,6 @@
 							<div class="col-sm-10">
 								<select data-placeholder="选择标签" class="chosen-select" multiple
 									style="width:350px;" tabindex="4" id="tag" name="tag">
-									<option value="123">111</option>
-									<option value="3">222</option>
-									<option value="4">333</option>
-									<option value="5">444</option>
-									<option value="6">512</option>
-									<option value="17">666</option>
-									<option value="18">521</option>
-									<option value="28">666</option>
 								</select>
 							</div>
 						</div>
@@ -177,9 +169,9 @@
 		});
 		$(".dial").knob();
 
-		$('.chosen-select').chosen({
-			width : "100%"
-		});
+		// $('.chosen-select').chosen({
+		// 	width : "100%"
+		// });
 	});
 
     $(function() {
@@ -192,6 +184,9 @@
                     htmlappend += `<option value="${"${result[i].id}"}">${"${result[i].tagName}"}</option>`;
                 }
                 $("#tag").append(htmlappend);
+                $('.chosen-select').chosen({
+                    width : "100%"
+                });
             }
         });
     });
