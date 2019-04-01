@@ -103,9 +103,9 @@
 						<div class="hr-line-dashed"></div>
 						<div class="form-group  row">
 							<label class="col-sm-2 col-form-label">内容</label>
-							<div class="mail-box">
+							<div class="mail-box col-sm-10">
 								<div class="mail-text h-200">
-									<div class="summernote" id="content">
+									<div class="summernote"  style="width:100%" id="content">
 										<br /> <br />
 									</div>
 									<div class="clearfix"></div>

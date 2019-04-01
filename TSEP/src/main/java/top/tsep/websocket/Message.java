@@ -6,14 +6,28 @@ import java.util.List;
 
 public class Message {
 	private String welcome;
+	
 	private List<String> username; //存放用户集合
+	
 	private String context;
+	
+	private String userId;
+	
+	private String userTx;
 	
 	private String msgTime;
 	
 	private String msgType;
 	
 	private String currentUser;
+	
+	
+	public String getUserTx() {
+		return userTx;
+	}
+	public void setUserTx(String userTx) {
+		this.userTx = userTx;
+	}
 	
 	public String getMsgType() {
 		return msgType;
@@ -57,6 +71,12 @@ public class Message {
 				+ new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()) + "说<br>"
 				+ msg + "<br>" ;*/
 		this.context = msg;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 }
 

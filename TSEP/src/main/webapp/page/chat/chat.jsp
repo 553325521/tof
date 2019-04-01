@@ -5,8 +5,6 @@
 			+ path + "/";
 %>
 <jsp:include page="/page/tool/top.jsp"></jsp:include>
-<link href="<%=basePath%>css/plugins/ladda/ladda-themeless.min.css"
-	rel="stylesheet">
 <div class="wrapper wrapper-content animated fadeInRight">
 	<div class="row">
 		<div class="col-lg-12">
@@ -86,64 +84,14 @@
 
 						</div>
 						<div class="col-md-3">
+							<div id="load-friend-icon"
+								style="position:absolute;top: 40%;left: 40%;">
+								<img style="width:25px;height:25px;"
+									src="<%=basePath%>img/icon/load.gif" alt="">
+							</div>
 							<div class="chat-users">
 								<div class="users-list">
-									<div class="chat-user">
-										<img class="chat-avatar" src="<%=basePath%>img/icon/load.gif" alt="">
-									</div>
-									<%-- <div class="chat-user">
-										<img class="chat-avatar" src="<%=basePath%>img/a4.jpg" alt="">
-										<div class="chat-user-name">
-											<a href="#">小明</a>
-										</div>
-									</div>
-									<div class="chat-user">
-										<img class="chat-avatar" src="<%=basePath%>img/a1.jpg" alt="">
-										<div class="chat-user-name">
-											<a href="#">小明</a>
-										</div>
-									</div>
-									<div class="chat-user">
-										<span class="float-right label label-primary">在线</span> <img
-											class="chat-avatar" src="<%=basePath%>img/a2.jpg" alt="">
-										<div class="chat-user-name">
-											<a href="#">小明</a>
-										</div>
-									</div>
-									<div class="chat-user">
-										<span class="float-right label label-primary">在线</span> <img
-											class="chat-avatar" src="<%=basePath%>img/a3.jpg" alt="">
-										<div class="chat-user-name">
-											<a href="#">小明</a>
-										</div>
-									</div>
-									<div class="chat-user">
-										<img class="chat-avatar" src="<%=basePath%>img/a5.jpg" alt="">
-										<div class="chat-user-name">
-											<a href="#">小明</a>
-										</div>
-									</div>
-									<div class="chat-user">
-										<img class="chat-avatar" src="<%=basePath%>img/a6.jpg" alt="">
-										<div class="chat-user-name">
-											<a href="#">小明</a>
-										</div>
-									</div>
-									<div class="chat-user">
-										<img class="chat-avatar" src="<%=basePath%>img/a2.jpg" alt="">
-										<div class="chat-user-name">
-											<a href="#">小明</a>
-										</div>
-									</div>
-									<div class="chat-user">
-										<span class="float-right label label-primary">在线</span> <img
-											class="chat-avatar" src="<%=basePath%>img/a3.jpg" alt="">
-										<div class="chat-user-name">
-											<a href="#">小明</a>
-										</div>
-									</div> --%>
-
-
+									<!-- 好友列表 -->
 								</div>
 
 							</div>
@@ -181,27 +129,11 @@
 
 </div>
 <jsp:include page="/page/tool/footer.jsp"></jsp:include>
-<script src="<%=basePath%>js/plugins/ladda/spin.min.js"></script>
-<script src="<%=basePath%>js/plugins/ladda/ladda.min.js"></script>
-<script src="<%=basePath%>js/plugins/ladda/ladda.jquery.min.js"></script>
 <script type="text/javascript">
 	
-	//产生随机字符串
-	function randomString(len) {
-		
-		len = len || 32;
-		var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-		var maxPos = $chars.length;
-		var pwd = '';
-		for (i = 0; i < len; i++) {
-			pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-		}
-		return pwd;
-	}
-	var username = randomString(4);
 	var ws; //一个ws对象就是一个通话管理
-	var target = "ws://localhost/TSEP/chat?username=" + username;
-	
+	var target = "ws://localhost/TSEP/chat?username=${sessionScope.SESSION_USER.id}-${sessionScope.SESSION_USER.nickName}-${sessionScope.SESSION_USER.userTx}";
+	var username = "${sessionScope.SESSION_USER.nickName}";
 	//界面离开监听
 	<%-- function onbeforeunload_handler() {
 		$.post('<%=basePath%>user/accessOrOutChat',{"operation":"out"},function(data){
@@ -223,7 +155,8 @@
 		//debugger;
 		$.ajaxSettings.async = false;
 		$.post('<%=basePath%>user/accessOrOutChat',{"operation":"out"},function(data){
-			ws.send("update_friend_list");
+			var msgObj = {"msgType":"update_friend_list","msgContent":""};
+			ws.send(JSON.stringify(msgObj));
 			ws.close();
 		},"json");
 		//console.log(123);
@@ -256,20 +189,12 @@
 				}
 				
 			}
+			$("#load-friend-icon").css("display","none");
 		},"json");
 	}
 	
 
 	$(function() {
-		var l = $( '.users-list' ).ladda();
-		//l.ladda( 'start' );
-		l.ladda( 'start' );
-
-	    // Timeout example
-	    // Do something in backend and then stop ladda
-	    setTimeout(function(){
-	        l.ladda('stop');
-	    },12000)
 		/* refreshFriendList(); */
 		//根据浏览器的不同区创建不同的websocket对象
 		if ('WebSocket' in window) {
@@ -296,7 +221,7 @@
 		   						  "onclick": null,
 		   						  "showDuration": "400",
 		   						  "hideDuration": "1000",
-		   						  "timeOut": "7000",
+		   						  "timeOut": "2000",
 		   						  "extendedTimeOut": "1000",
 		   						  "showEasing": "swing",
 		   						  "hideEasing": "linear",
@@ -310,8 +235,9 @@
 				refreshFriendList();
 			}else{
 				if (obj.currentUser == username) {
+					/* ${sessionScope.SESSION_USER.userTx} */
 					$(".chat-discussion").append(`<div class="chat-message right">
-							<img class="message-avatar" src="<%=basePath%>img/a1.jpg"
+							<img class="message-avatar" src="${"${obj.userTx}"}"
 							alt="">
 						<div class="message">
 							<a class="message-author" href="#">${"${obj.currentUser}"}</a> <span
@@ -321,7 +247,7 @@
 					</div>`);
 				} else {
 					$(".chat-discussion").append(`<div class="chat-message left">
-							<img class="message-avatar" src="<%=basePath%>img/a2.jpg"
+							<img class="message-avatar" src="${"${obj.userTx}"}"
 							alt="">
 						<div class="message">
 							<a class="message-author" href="#">${"${obj.currentUser}"}</a> <span
@@ -337,8 +263,9 @@
 			ws.close();
 		};
 		$("#send").click(function() {
-			var msg = $(".message-input").val();
-			ws.send(msg);
+			var msgContent = $(".message-input").val();
+			var msgObj = {"msgType":"chat_msg","msgContent":msgContent};
+			ws.send(JSON.stringify(msgObj));
 			$(".message-input").val("");
 		})
 	})
