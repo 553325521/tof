@@ -151,7 +151,6 @@
                         htmlappend +='</td>';
                     }
                     htmlappend +='</tr>';
-                    <%--htmlappend += `<option value="${"${result[i].id}"}">${"${result[i].subjectName}"}</option>`;--%>
                 }
                 $("#questionList").append(htmlappend);
                 $(".pie").peity("pie");

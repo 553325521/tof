@@ -75,4 +75,8 @@ public class QuestionServiceImpl implements QuestionService {
 		}
 		return list;
 	}
+
+	public QuestionEntity selectByPrimaryKey(Integer id){
+		return questionDao.selectByPrimaryKey(id);
+	}
 }

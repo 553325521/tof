@@ -8,15 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
-public interface QuestionService {
+public interface CommentService {
 
     /**
      * 注册用户
      */
-    public ResultMap save(Map<String,Object> parameter,HttpServletRequest request);
-
-    public List<QuestionEntity> selectBysubjectId(@RequestParam Map<String,Object>map);
-
-    QuestionEntity selectByPrimaryKey(Integer id);
-
+    public ResultMap save(Map<String, Object> parameter, HttpServletRequest request);
 }

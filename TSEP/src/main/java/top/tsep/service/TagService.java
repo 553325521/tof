@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import top.tsep.pojo.TagEntity;
 import top.tsep.utils.ResultMap;
 
@@ -17,5 +18,6 @@ public interface TagService {
 	int count(Map<String, Object> map);
 	
 	public ResultMap delete(TagEntity t);
-	
+
+	List<String>  findTagNameByList(@Param("tagId") String tagId);
 }

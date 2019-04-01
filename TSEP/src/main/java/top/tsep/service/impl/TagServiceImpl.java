@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,6 +68,8 @@ public class TagServiceImpl implements TagService {
 	}
 
 
-	
+	public List<String>  findTagNameByList(@Param("tagId") String tagId){
+		return tagDao.findTagNameByList(tagId);
+	}
 	
 }
