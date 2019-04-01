@@ -99,12 +99,18 @@ public class ChatServer {
 		if(msg.equals("update_friend_list")){
 			message.setMsgType("update_friend_list");
 			message.setContext(username,"更新好友列表");
+			message.setUsername(users);
+			message.setCurrentUser(username);
+			message.setMsgTime(new SimpleDateFormat("yyyy年MM月dd日-hh:mm:ss").format(new Date()));
+			broadcast(sessions,JSONObject.toJSONString(message));
+		}else{
+			message.setUsername(users);
+			message.setContext(username,msg);
+			message.setCurrentUser(username);
+			message.setMsgTime(new SimpleDateFormat("yyyy年MM月dd日-hh:mm:ss").format(new Date()));
+			broadcast(sessions,JSONObject.toJSONString(message));
 		}
-		message.setUsername(users);
-		message.setCurrentUser(username);
-		message.setMsgTime(new SimpleDateFormat("yyyy年MM月dd日-hh:mm:ss").format(new Date()));
 		
-		broadcast(sessions,JSONObject.toJSONString(message));
 		
 		
 	}

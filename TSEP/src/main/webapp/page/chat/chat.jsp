@@ -5,6 +5,8 @@
 			+ path + "/";
 %>
 <jsp:include page="/page/tool/top.jsp"></jsp:include>
+<link href="<%=basePath%>css/plugins/ladda/ladda-themeless.min.css"
+	rel="stylesheet">
 <div class="wrapper wrapper-content animated fadeInRight">
 	<div class="row">
 		<div class="col-lg-12">
@@ -86,6 +88,9 @@
 						<div class="col-md-3">
 							<div class="chat-users">
 								<div class="users-list">
+									<div class="chat-user">
+										<img class="chat-avatar" src="<%=basePath%>img/icon/load.gif" alt="">
+									</div>
 									<%-- <div class="chat-user">
 										<img class="chat-avatar" src="<%=basePath%>img/a4.jpg" alt="">
 										<div class="chat-user-name">
@@ -176,6 +181,9 @@
 
 </div>
 <jsp:include page="/page/tool/footer.jsp"></jsp:include>
+<script src="<%=basePath%>js/plugins/ladda/spin.min.js"></script>
+<script src="<%=basePath%>js/plugins/ladda/ladda.min.js"></script>
+<script src="<%=basePath%>js/plugins/ladda/ladda.jquery.min.js"></script>
 <script type="text/javascript">
 	
 	//产生随机字符串
@@ -211,6 +219,7 @@
 		return "";
 	}; --%>
 	window.addEventListener('beforeunload', function (e) {
+		
 		//debugger;
 		$.ajaxSettings.async = false;
 		$.post('<%=basePath%>user/accessOrOutChat',{"operation":"out"},function(data){
@@ -252,6 +261,15 @@
 	
 
 	$(function() {
+		var l = $( '.users-list' ).ladda();
+		//l.ladda( 'start' );
+		l.ladda( 'start' );
+
+	    // Timeout example
+	    // Do something in backend and then stop ladda
+	    setTimeout(function(){
+	        l.ladda('stop');
+	    },12000)
 		/* refreshFriendList(); */
 		//根据浏览器的不同区创建不同的websocket对象
 		if ('WebSocket' in window) {

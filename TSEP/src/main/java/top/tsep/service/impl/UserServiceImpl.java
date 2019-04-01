@@ -207,9 +207,7 @@ public class UserServiceImpl implements UserService {
 		CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
 		UserEntity currentLoginUser = checkLoginStatus.getUsers();
 		int subjectId = Integer.parseInt(currentLoginUser.getAttribute2());
-		System.out.println(DateConvert.dateToString(new Date()));
 		List<UserEntity> userList = userDao.loadListBySubjectId(subjectId);
-		System.out.println(DateConvert.dateToString(new Date()));
 		for(int i = 0;i < userList.size();i++){
 			if(userList.get(i).getAttribute1().equals("0")){
 				userList.get(i).setAttribute3("离线");
