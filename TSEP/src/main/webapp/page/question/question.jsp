@@ -127,7 +127,19 @@
                 var counthtml = '发现'+result.length+'个问题';
                 $("#questionList").append(counthtml);
                 for (var i = 0; i < result.length; i++) {
-                    htmlappend += '<tr><td><span class="label label-primary">'+result[i].classify+'</span></td>' +
+                    htmlappend += '<tr><td>';
+                    if(result[i].classify == '问题'){
+                        htmlappend +='<span class="label label-danger">';
+                    }else if(result[i].classify == '笔记'){
+                        htmlappend +='<span class="label label-info">';
+                    }else if(result[i].classify == '心得'){
+                        htmlappend +='<span class="label label-success">';
+                    }else if(result[i].classify == '随笔'){
+                        htmlappend +='<span class="label label-primary">';
+                    }else{
+                        htmlappend +='<span class="label label-default">';
+                    }
+                    htmlappend += result[i].classify+'</span></td>' +
                         '<td class="issue-info"><a href="<%=basePath%>page/question/question_detail.jsp?qId="'+result[i].id+'>'+result[i].title+'</a><small></small></td><td>'+result[i].nick_name+'</td>' +
                         '<td>'+result[i].creatTime+'</td><td><span class="pie">'+result[i].difficult+'/100'+'</span> '+result[i].difficult+'d</td>';
                     htmlappend +='<td class="text-right">';
