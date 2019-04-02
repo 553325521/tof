@@ -29,4 +29,13 @@ public interface UserService {
 	
 	List<UserEntity> loadUserListBySubjectId(HttpServletRequest request);
 	
+	/**
+	* <p>Title: modifyMyInfo</p>
+	* <p>Description:更新个人资料 </p>
+	* @param request
+	* @param user
+	* @return
+	*/
+	UserEntity modifyMyInfo(HttpServletRequest request,UserEntity user);
+	
 }

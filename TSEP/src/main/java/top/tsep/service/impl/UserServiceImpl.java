@@ -59,6 +59,7 @@ public class UserServiceImpl implements UserService {
 		u.setUserQq(null);
 		u.setUserTx(parameter.get("userTx").toString());
 		u.setAttribute1("0");
+		u.setCreateTime(DateConvert.dateToString(new Date()));
 		if(type.equals("0")){
 			if(s == null){
 				r.setResultType("9999");
@@ -216,6 +217,17 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return userList;
+	}
+
+	@Override
+	public UserEntity modifyMyInfo(HttpServletRequest request, UserEntity user) {
+		CheckLoginStatus checkLoginStatus = new CheckLoginStatus(request);
+		UserEntity currentUser = checkLoginStatus.getUsers();
+		user.setId(currentUser.getId());
+		userDao.updateByPrimaryKeySelective(user);
+		UserEntity newUser = userDao.selectByPrimaryKey(currentUser.getId());
+		checkLoginStatus.putUsers(newUser);
+		return newUser;
 	}
 
 }

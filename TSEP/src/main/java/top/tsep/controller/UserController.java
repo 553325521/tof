@@ -35,5 +35,11 @@ public class UserController {
 		List<UserEntity> userList = userService.loadUserListBySubjectId(request);
 		return userList;
 	}
+	
+	@RequestMapping(value = "/modifyMyInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public UserEntity modifyMyInfo(HttpServletRequest request,UserEntity user) {
+		return userService.modifyMyInfo(request, user);
+	}
 
 }

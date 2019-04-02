@@ -55,7 +55,7 @@
 								</div>
 							</div>
 							<div class="ibox-content">
-								<form method="post">
+								<form method="post" id="modifyForm">
 									<div class="form-group  row">
 										<div class="col-4">
 											<div class="text-center">
@@ -160,14 +160,14 @@
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">简介</label>
 										<div class="col-sm-10">
-											<textarea class="form-control" rows="3" id="userIntro" class="userIntro">${sessionScope.SESSION_USER.userIntro}</textarea>
+											<textarea class="form-control" rows="3" id="userIntro" name="userIntro" class="userIntro">${sessionScope.SESSION_USER.userIntro}</textarea>
 										</div>
 									</div>
 									<div class="hr-line-dashed"></div>
 									<div class="form-group row">
 										<div class="col-sm-4 col-sm-offset-2">
-											<button class="btn btn-white btn-sm" type="submit">取消</button>
-											<button class="btn btn-primary btn-sm" type="submit">保存更改</button>
+											<button class="btn btn-white btn-sm" type="button">取消</button>
+											<button class="btn btn-primary btn-sm" type="button" id="saveUpdateBtn">保存更改</button>
 										</div>
 									</div>
 								</form>
@@ -192,7 +192,6 @@
 	<!-- Custom and plugin javascript -->
 	<script src="<%=basePath%>js/inspinia.js"></script>
 	<script src="<%=basePath%>js/plugins/pace/pace.min.js"></script>
-
 	<!-- iCheck -->
 	<script src="<%=basePath%>js/plugins/iCheck/icheck.min.js"></script>
 	<script>
@@ -270,6 +269,13 @@
 				var base64url = cas.toDataURL('image/jpeg');
 				$("#userTx").attr("src",base64url);
 				$("#modal-form").modal('hide');
+			})
+			$('#saveUpdateBtn').click(function(){
+				var param = $("#modifyForm").serialize();
+				console.info(param);
+				$.post("<%=basePath%>/user/modifyMyInfo",param,function(data){
+					
+				},"json");
 			})
 		});
 	</script>
