@@ -19,7 +19,8 @@
 <link href="<%=basePath%>font-awesome/css/font-awesome.css"
 	rel="stylesheet">
 <!-- Toastr style -->
-<link href="<%=basePath%>css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="<%=basePath%>css/plugins/toastr/toastr.min.css"
+	rel="stylesheet">
 <link href="<%=basePath%>css/plugins/steps/jquery.steps.css"
 	rel="stylesheet">
 <link href="<%=basePath%>css/animate.css" rel="stylesheet">
@@ -29,6 +30,11 @@
 	rel="stylesheet">
 </head>
 <style>
+.select-bg {
+	background-image:
+		url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC");
+}
+
 .checkbox label::before {
 	content: "";
 	display: inline-block;
@@ -247,19 +253,15 @@ button {
 									<h1>上传头像</h1>
 									<fieldset>
 										<div class="row">
-											<div class="col-sm-12 text-center">
+											<div class="col-sm-6 col-sm-offset-2 select-bg">
+												<img src="" id="photo">
+											</div>
+											<div class="col-sm-2">
 												<label for="file" class="btn btn-danger"> <span>选择图片</span>
 													<input type="file" name="file" id="file"
 													accept="image/gif, image/jpeg, image/png"
 													onchange="changeFile()" class="sr-only">
 												</label>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-sm-6 col-sm-offset-2">
-												<img src="" id="photo">
-											</div>
-											<div class="col-sm-2">
 												<div>
 													<p>预览(128*128)：</p>
 													<div class="img-preview"></div>
@@ -269,7 +271,7 @@ button {
 												<div>
 													<br />
 													<p>结果：</p>
-													<img alt="裁剪结果" id="result">
+													<img src="<%=basePath%>/img/img_bg.png" id="result">
 												</div>
 											</div>
 										</div>
@@ -318,7 +320,7 @@ button {
 	<script src="<%=basePath%>js/plugins/validate/jquery.validate.min.js"></script>
 
 	<script src="<%=basePath%>js/plugins/toastr/toastr.min.js"></script>
-	
+
 	<script>
 		var uploadedImageURL = undefined;
 		// 修改自官方demo的js
@@ -442,26 +444,26 @@ button {
 						"userTx" : base64url
 					}) + "&" + form.serialize();
 					$.post("<%=basePath%>/register", parameter, function(data) {
-						if(data.resultType == '0000'){
-							location.href="<%=basePath%>login.jsp";
-						}else{
-							 toastr.options = {
-									  "closeButton": true,
-									  "debug": false,
-									  "progressBar": true,
-									  "preventDuplicates": true,
-									  "positionClass": "toast-bottom-right",
-									  "onclick": null,
-									  "showDuration": "400",
-									  "hideDuration": "1000",
-									  "timeOut": "7000",
-									  "extendedTimeOut": "1000",
-									  "showEasing": "swing",
-									  "hideEasing": "linear",
-									  "showMethod": "fadeIn",
-									  "hideMethod": "fadeOut"
-									};
-							 toastr['warning']('科目不存在!','注册失败');
+						if (data.resultType == '0000') {
+							location.href = "<%=basePath%>login.jsp";
+						} else {
+							toastr.options = {
+								"closeButton" : true,
+								"debug" : false,
+								"progressBar" : true,
+								"preventDuplicates" : true,
+								"positionClass" : "toast-bottom-right",
+								"onclick" : null,
+								"showDuration" : "400",
+								"hideDuration" : "1000",
+								"timeOut" : "7000",
+								"extendedTimeOut" : "1000",
+								"showEasing" : "swing",
+								"hideEasing" : "linear",
+								"showMethod" : "fadeIn",
+								"hideMethod" : "fadeOut"
+							};
+							toastr['warning']('科目不存在!', '注册失败');
 						}
 					}, "json")
 				}

@@ -60,8 +60,8 @@
 						<!-- <div class="logo-element">IN+</div> -->
 					</li>
 					<li class="active"><a class="J_menuItem"
-						href="<%=basePath%>page/personal/myinfo.jsp"> <i class="fa fa-user-circle"></i> <span
-							class="nav-label">个人信息</span>
+						href="<%=basePath%>page/personal/my_info.jsp"> <i class="fa fa-user-circle"></i> <span
+							class="nav-label">个人资料</span>
 					</a></li>
 					<li><a class="J_menuItem" href="<%=basePath%>page/personal/my_operation.jsp"> <i
 							class="fa fa-star-o"></i> <span class="nav-label">全部动态</span>
@@ -216,15 +216,15 @@
 			<div class="row content-tabs"></div>
 			<div class="row J_mainContent" id="content-main">
 				<iframe class="J_iframe" name="iframe0" width="100%" height="100%"
-					src="<%=basePath%>page/personal/myinfo.jsp" frameborder="0" data-id="<%=basePath%>page/personal/myinfo.jsp"
+					src="<%=basePath%>page/personal/my_info.jsp" frameborder="0" data-id="<%=basePath%>page/personal/myinfo.jsp"
 					seamless></iframe>
 			</div>
 			<div class="footer">
 				<div class="pull-right">
-					10GB of <strong>250GB</strong> Free.
+					<strong>师生交流平台</strong>
 				</div>
 				<div>
-					<strong>Copyright</strong> Example Company &copy; 2014-2018
+					<strong>Copyright</strong> 王景龙-毕业设计 &copy; 2019
 				</div>
 			</div>
 

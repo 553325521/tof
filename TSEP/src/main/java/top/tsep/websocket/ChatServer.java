@@ -53,8 +53,8 @@ public class ChatServer {
 		/*String query = ChatServer.getURLDecoderString(queryEncode);*/
 		username =ChatServer.getURLDecoderString((query.split("=")[1]).split("-")[1]);
 		id = (query.split("=")[1]).split("-")[0];
-		userTx = (query.split("=")[1]).split("-")[2];
-		System.out.println(userTx);
+		//userTx = (query.split("=")[1]).split("-")[2];
+		//System.out.println(userTx);
 		// 把每个session添加到用户通信管道里面去
 		sessions.add(session);
 		users.add(id);
@@ -131,6 +131,8 @@ public class ChatServer {
 			message.setCurrentUser(username);
 			message.setMsgTime(new SimpleDateFormat("yyyy年MM月dd日-hh:mm:ss").format(new Date()));
 			broadcast(sessions, JSONObject.toJSONString(message));
+		}else if(msgType.equals("set_tx")){
+			userTx = msgContent;
 		} else {
 			message.setUserTx(userTx);
 			message.setUsername(users);
@@ -149,13 +151,14 @@ public class ChatServer {
 	public void onClose(Session session) {
 		System.out.println(username + "退出聊天室");
 		sessions.remove(session);
-		users.remove(username);
+		users.remove(id);
 		System.out.println("在线人数1:" + users.size());
 		System.out.println("在线人数2:" + sessions.size());
 	}
 
 	@OnError
 	public void onError(Session session, Throwable error) {
+		users.remove(id);
 		sessions.remove(session);
 	}
 }

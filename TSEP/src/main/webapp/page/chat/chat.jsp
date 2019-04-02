@@ -34,52 +34,6 @@
 						<div class="col-md-9 ">
 							<div class="chat-discussion">
 
-								<div class="chat-message left">
-									<img class="message-avatar" src="<%=basePath%>img/a1.jpg"
-										alt="">
-									<div class="message">
-										<a class="message-author" href="#"> 小明 </a> <span
-											class="message-date"> 2017年12月25日星期五 - 11:12:36 </span> <span
-											class="message-content"> 聊天互动内容信息 </span>
-									</div>
-								</div>
-								<div class="chat-message right">
-									<img class="message-avatar" src="<%=basePath%>img/a4.jpg"
-										alt="">
-									<div class="message">
-										<a class="message-author" href="#"> 小明 </a> <span
-											class="message-date"> 2017年12月25日星期五 - 11:12:36 </span> <span
-											class="message-content"> 聊天互动内容信息 </span>
-									</div>
-								</div>
-								<div class="chat-message right">
-									<img class="message-avatar" src="<%=basePath%>img/a2.jpg"
-										alt="">
-									<div class="message">
-										<a class="message-author" href="#"> 小明 </a> <span
-											class="message-date"> 2017年12月25日星期五 - 11:12:36 </span> <span
-											class="message-content"> 聊天互动内容信息 </span>
-									</div>
-								</div>
-								<div class="chat-message left">
-									<img class="message-avatar" src="<%=basePath%>img/a5.jpg"
-										alt="">
-									<div class="message">
-										<a class="message-author" href="#"> 小明 </a> <span
-											class="message-date"> 2017年12月25日星期五 - 11:12:36 </span> <span
-											class="message-content"> 聊天互动内容信息 </span>
-									</div>
-								</div>
-								<div class="chat-message right">
-									<img class="message-avatar" src="<%=basePath%>img/a6.jpg"
-										alt="">
-									<div class="message">
-										<a class="message-author" href="#"> 小明 </a> <span
-											class="message-date"> 2017年12月25日星期五 - 11:12:36 </span> <span
-											class="message-content"> 聊天互动内容信息 </span>
-									</div>
-								</div>
-
 							</div>
 
 						</div>
@@ -132,8 +86,9 @@
 <script type="text/javascript">
 	
 	var ws; //一个ws对象就是一个通话管理
-	var target = "ws://localhost/TSEP/chat?username=${sessionScope.SESSION_USER.id}-${sessionScope.SESSION_USER.nickName}-${sessionScope.SESSION_USER.userTx}";
+	var target = "ws://localhost/TSEP/chat?username=${sessionScope.SESSION_USER.id}-${sessionScope.SESSION_USER.nickName}";
 	var username = "${sessionScope.SESSION_USER.nickName}";
+	var userTx = "${sessionScope.SESSION_USER.userTx}";
 	//界面离开监听
 	<%-- function onbeforeunload_handler() {
 		$.post('<%=basePath%>user/accessOrOutChat',{"operation":"out"},function(data){
@@ -155,7 +110,7 @@
 		//debugger;
 		$.ajaxSettings.async = false;
 		$.post('<%=basePath%>user/accessOrOutChat',{"operation":"out"},function(data){
-			var msgObj = {"msgType":"update_friend_list","msgContent":""};
+			var msgObj = {"msgType":"update_friend_list","msgContent":"离开时候刷新好友列表"};
 			ws.send(JSON.stringify(msgObj));
 			ws.close();
 		},"json");
@@ -193,8 +148,38 @@
 		},"json");
 	}
 	
-
+	//加载历史消息(最新八条记录)
+	function loadMsgHistory(){
+		$.post('<%=basePath%>chat/loadMsgList',null,function(data){
+			var userId = "${sessionScope.SESSION_USER.id}";
+			for(var i = 0;i < data.length; i++){
+				if(userId == data[i].user_id){
+					$(".chat-discussion").prepend(`<div class="chat-message right">
+							<img class="message-avatar" src="${"${data[i].user_tx}"}"
+							alt="">
+						<div class="message">
+							<a class="message-author" href="#">${"${data[i].nick_name}"}</a> <span
+								class="message-date"> ${"${data[i].send_time}"} </span> <span
+								class="message-content"> ${"${data[i].content}"}  </span>
+						</div>
+					</div>`);
+				}else{
+					$(".chat-discussion").prepend(`<div class="chat-message left">
+							<img class="message-avatar" src="${"${data[i].user_tx}"}"
+							alt="">
+						<div class="message">
+							<a class="message-author" href="#">${"${data[i].nick_name}"}</a> <span
+								class="message-date"> ${"${data[i].send_time}"} </span> <span
+								class="message-content"> ${"${data[i].content}"}  </span>
+						</div>
+					</div>`);
+				}
+			}
+		},"json");
+	}
 	$(function() {
+		//加载消息记录
+		loadMsgHistory();
 		/* refreshFriendList(); */
 		//根据浏览器的不同区创建不同的websocket对象
 		if ('WebSocket' in window) {
@@ -229,6 +214,9 @@
 		   						  "hideMethod": "fadeOut"
 		   						};
 		   				 	toastr['success']("欢迎"+data.resultContent+"来到聊天室",'聊天室通知');
+		   				/* 给websocket设置头像 */
+		   				 var msgObj = {"msgType":"set_tx","msgContent":"http://img5.imgtn.bdimg.com/it/u=1093950722,1689053277&fm=200&gp=0.jpg"};
+		   				ws.send(JSON.stringify(msgObj));
 					}
 				},"json");
 			}else if(obj.msgType == 'update_friend_list'){
@@ -265,6 +253,9 @@
 		$("#send").click(function() {
 			var msgContent = $(".message-input").val();
 			var msgObj = {"msgType":"chat_msg","msgContent":msgContent};
+			/* 保存聊天消息 */
+			$.post("<%=basePath%>/chat/saveChatMsg",{"msgContent":msgContent},function(data){
+			},"json");
 			ws.send(JSON.stringify(msgObj));
 			$(".message-input").val("");
 		})
