@@ -105,7 +105,7 @@
 										</div>
 
 										<div class="row" style="margin-top:30px;">
-											<div class="col-lg-12">
+											<div class="col-lg-12" id="commentList">
 
 												<div class="col-lg-12 animated fadeInRight" style="padding: 0;">
 													<div class="mail-box">
@@ -119,85 +119,8 @@
 															<a href="" onclick="comment()" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="发表评论"><i class="fa fa-reply"></i> 发表评论</a>
 														</div>
 														<div class="clearfix"></div>
-
-
-
 													</div>
 												</div>
-												<div class="social-feed-box">
-													<div class="social-avatar">
-														<a href="" class="float-left">
-															<img alt="image" src="img/a1.jpg">
-														</a>
-														<div class="media-body">
-															<a href="#">
-																小明
-															</a>
-															<small class="text-muted">今天下午2017.12.12 4:21</small>
-														</div>
-													</div>
-													<div class="social-body">
-														<p>
-															时间是一切财富中最宝贵的财富。
-														</p>
-													</div>
-												</div>
-												<div class="social-feed-box">
-													<div class="social-avatar">
-														<a href="" class="float-left">
-															<img alt="image" src="img/a2.jpg">
-														</a>
-														<div class="media-body">
-															<a href="#">
-																小红
-															</a>
-															<small class="text-muted">今天下午2017.12.12 4:21</small>
-														</div>
-													</div>
-													<div class="social-body">
-														<p>
-															时间是一切财富中最宝贵的财富。
-														</p>
-													</div>
-												</div>
-												<div class="social-feed-box">
-													<div class="social-avatar">
-														<a href="" class="float-left">
-															<img alt="image" src="img/a3.jpg">
-														</a>
-														<div class="media-body">
-															<a href="#">
-																小黑
-															</a>
-															<small class="text-muted">今天下午2017.12.12 4:21</small>
-														</div>
-													</div>
-													<div class="social-body">
-														<p>
-															时间是一切财富中最宝贵的财富。
-														</p>
-													</div>
-												</div>
-												<div class="social-feed-box">
-													<div class="social-avatar">
-														<a href="" class="float-left">
-															<img alt="image" src="img/a5.jpg">
-														</a>
-														<div class="media-body">
-															<a href="#">
-																小白
-															</a>
-															<small class="text-muted">今天下午2017.12.12 4:21</small>
-														</div>
-													</div>
-													<div class="social-body">
-														<p>
-															时间是一切财富中最宝贵的财富。
-														</p>
-													</div>
-												</div>
-
-
 											</div>
 										</div>
 
@@ -247,6 +170,25 @@
                     tag +='</td>';
                 }
                 $("#tagName").append(tag);
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "<%=basePath%>commetnList?qId="+qId,
+            success: function (result) {
+                var commentList = '';
+                if(result!=null && result!=""){
+                   for(var i=0;i<result.length;i++){
+                       commentList += '<div class="social-feed-box">'
+							   +'<div class="social-avatar">'+'<a href="" class="float-left">'+
+                           '<img alt="image" src="'+result[i].userPhoto+'"></a>'+
+                           '<div class="media-body"><a>'+result[i].userName+'</a>'
+                           +'<small class="text-muted">'+result[i].createTime+'</small> </div>'
+					   +'</div><div class="social-body"><p>'+result[i].content+'</p></div></div>';
+				   }
+				}
+                $("#commentList").append(commentList);
             }
         });
 

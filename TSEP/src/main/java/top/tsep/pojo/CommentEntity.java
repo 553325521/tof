@@ -11,6 +11,10 @@ public class CommentEntity {
 
     private Integer questionId;
 
+    private String userName;
+
+    private String userPhoto;
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +53,21 @@ public class CommentEntity {
 
     public void setQuestionId(Integer questionId) {
         this.questionId = questionId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPhoto() {
+        return userPhoto;
+    }
+
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
     }
 }

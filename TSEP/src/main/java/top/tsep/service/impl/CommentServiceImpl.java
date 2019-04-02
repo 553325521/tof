@@ -12,6 +12,7 @@ import top.tsep.utils.ResultMap;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Service("commentService")
@@ -42,4 +43,8 @@ public class CommentServiceImpl implements CommentService {
 		r.setResultContent("发表成功");
 		return r;
 	}
+
+	public List<CommentEntity> selectByQuestionId(Integer qId){
+	    return commentDao.selectByQuestionId(qId);
+    }
 }

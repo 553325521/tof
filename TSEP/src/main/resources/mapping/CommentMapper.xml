@@ -7,6 +7,8 @@
     <result column="create_time" property="createTime" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="question_id" property="questionId" jdbcType="INTEGER" />
+    <result column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="userPhoto" property="userPhoto" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, content, create_time, user_id, question_id
@@ -90,4 +92,12 @@
       question_id = #{questionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByQuestionId" resultMap="BaseResultMap"  parameterType="java.lang.Integer" >
+    select
+    c.* ,u.nick_name as userName,u.user_tx as userPhoto
+    from ts_comment c
+    LEFT JOIN ts_user u ON u.id = c.user_id
+    where question_id = #{qId,jdbcType=INTEGER}
+  </select>
 </mapper>

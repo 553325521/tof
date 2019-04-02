@@ -2,6 +2,8 @@ package top.tsep.dao;
 
 import top.tsep.pojo.CommentEntity;
 
+import java.util.List;
+
 public interface CommentDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface CommentDao {
     int updateByPrimaryKeySelective(CommentEntity record);
 
     int updateByPrimaryKey(CommentEntity record);
+
+    public List<CommentEntity> selectByQuestionId(Integer qId);
 }
