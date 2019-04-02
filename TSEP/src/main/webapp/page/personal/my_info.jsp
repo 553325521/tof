@@ -108,11 +108,11 @@
 												<strong>${sessionScope.SESSION_USER.nickName}</strong>
 											</h3>
 											<address>
-												身份 ${sessionScope.SESSION_USER.userType == '0' ? '学生':'老师'}<br>
-												姓名 ${sessionScope.SESSION_USER.realName}<br> 邮箱
-												${sessionScope.SESSION_USER.email}<br> 手机
-												${sessionScope.SESSION_USER.userPhone == null ? '尚未完善':sessionScope.SESSION_USER.userPhone}<br>
-												QQ ${sessionScope.SESSION_USER.userQq == null ? '尚未完善':sessionScope.SESSION_USER.userQq}<br>
+												身份 >>${sessionScope.SESSION_USER.userType == '0' ? '学生':'老师'}<br>
+												姓名 >>${sessionScope.SESSION_USER.realName}<br> 
+												邮箱>>${sessionScope.SESSION_USER.email}<br> 
+												手机>>${sessionScope.SESSION_USER.userPhone == null ? '尚未完善':sessionScope.SESSION_USER.userPhone}<br>
+												QQ>>${sessionScope.SESSION_USER.userQq == null ? '尚未完善':sessionScope.SESSION_USER.userQq}<br>
 											</address>
 											<p>个人简介&nbsp;${sessionScope.SESSION_USER.userIntro == null ? '无':sessionScope.SESSION_USER.userIntro}</p>
 										</div>
